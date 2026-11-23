@@ -6,7 +6,7 @@ test.beforeEach(async({page})=>{
 test.afterEach(async({page})=>{expect(page._errors).toEqual([]);});
 for(const prefix of ['', '/preview']){
  test(prefix+' checkout: four plans, focus, close, keyboard and language',async({page})=>{
-  await page.goto(prefix+'/index.html');const dialog=page.locator('#checkout');const ids=['trial','monthly','quarterly','yearly'];const prices=['1','7','15','55'];
+  await page.goto(prefix+'/index.html');const dialog=page.locator('#checkout');const ids=['trial','monthly','quarterly','yearly'];const prices=['€1','€7','€15','€55'];
   for(let i=0;i<ids.length;i++){
    const trigger=page.locator('[data-open-checkout="'+ids[i]+'"]');await trigger.click();
    await expect(dialog).toBeVisible();await expect(dialog).toHaveAttribute('data-plan-id',ids[i]);

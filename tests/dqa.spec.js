@@ -42,7 +42,7 @@ for(const prefix of ['', '/preview']){
   await page.locator('#panel-account [data-open-tab=subscription]').click();
   await page.locator('#subscription-state').selectOption('active');
   await expect(page.locator('[data-demo-state=active] .subscription-preview')).toHaveCount(1);
-  await expect(page.locator('[data-subscription-plan=yearly] .price')).toHaveText('55');
+  await expect(page.locator('[data-subscription-plan=yearly] .price')).toHaveText('€55');
   await expect(page.locator('[data-demo-state=active]')).toContainText('5 devices');
   for(const state of ['expired','empty']){await page.locator('#subscription-state').selectOption(state);await expect(page.locator('[data-demo-state=active]')).not.toBeVisible();}
   const icons=await page.locator('[data-tab] svg').evaluateAll(nodes=>nodes.map(node=>node.innerHTML));expect(new Set(icons).size).toBe(5);
