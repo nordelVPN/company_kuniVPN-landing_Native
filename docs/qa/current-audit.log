@@ -1,0 +1,34 @@
+Local run: 2026-11-20; Windows; Node v24.21.0
+Initial commands: lint=0 build:dev=0 build:prod=0 check:build=0 test:smoke=0
+check:build: Validated 9 pages, headings, local links and assets.
+check-plans: Plan prices, equivalents, four cards, URL selection, fallback and changes passed.
+test:smoke: HTTP smoke passed: 18 page requests in root and subpath.
+Final diagnostics:
+
+> kunivpn@0.1.0 lint
+> eslint .
+
+LINT_EXIT 0
+MANIFEST index,features,apps,security,support,login,plans,checkout,account
+SECTION home false
+SECTION features false
+SECTION apps false
+SECTION security false
+SECTION support false
+SECTION plans false
+SECTION login false
+SERVICE_PAGE forgot-password false
+SERVICE_PAGE create-account false
+DIALOG false
+DICTIONARY en keys 164 missing 0
+DICTIONARY ru keys 164 missing 0
+LOGIN_INVALID_SUBMIT PASS: invalid marked and focused
+LOGIN_AFTER_CORRECTION aria-invalid=true message=Укажи корректную почту и пароль длиной не менее 8 символов.
+LOGIN_VALID_SUBMIT PASS: explicitly unavailable; no false authentication success
+LOGIN_COMPONENT forgot-password.html false
+LOGIN_COMPONENT create-account.html false
+LOGIN_COMPONENT type="checkbox" false
+CHECKER_SKIPS_FRAGMENT_URLS true
+PROBES_FINISHED
+AUDIT_EXIT 0
+

@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-23T07:12:42.659Z",
+  "captures": [
+    "docs/qa/deep-reference/en-1672-home.jpg",
+    "docs/qa/deep-reference/en-1672-features.jpg",
+    "docs/qa/deep-reference/en-1672-apps.jpg",
+    "docs/qa/deep-reference/en-1672-security.jpg",
+    "docs/qa/deep-reference/en-1672-support.jpg",
+    "docs/qa/deep-reference/en-1672-plans.jpg",
+    "docs/qa/deep-reference/en-1920-home.jpg",
+    "docs/qa/deep-reference/en-1920-features.jpg",
+    "docs/qa/deep-reference/en-1920-apps.jpg",
+    "docs/qa/deep-reference/en-1920-security.jpg",
+    "docs/qa/deep-reference/en-1920-support.jpg",
+    "docs/qa/deep-reference/en-1920-plans.jpg",
+    "docs/qa/deep-reference/en-390-home.jpg",
+    "docs/qa/deep-reference/en-390-features.jpg",
+    "docs/qa/deep-reference/en-390-apps.jpg",
+    "docs/qa/deep-reference/en-390-security.jpg",
+    "docs/qa/deep-reference/en-390-support.jpg",
+    "docs/qa/deep-reference/en-390-plans.jpg",
+    "docs/qa/deep-reference/en-320-home.jpg",
+    "docs/qa/deep-reference/en-320-features.jpg",
+    "docs/qa/deep-reference/en-320-apps.jpg",
+    "docs/qa/deep-reference/en-320-security.jpg",
+    "docs/qa/deep-reference/en-320-support.jpg",
+    "docs/qa/deep-reference/en-320-plans.jpg"
+  ],
+  "metrics": [
+    {
+      "width": 1672,
+      "scrollWidth": 1672,
+      "faq": true,
+      "preview": true,
+      "homeButton": {
+        "text": "kuniVPN apps",
+        "width": 167.953125,
+        "height": 53,
+        "fontSize": "16px",
+        "radius": "10px",
+        "icons": 0
+      }
+    },
+    {
+      "width": 1920,
+      "scrollWidth": 1920,
+      "faq": true,
+      "preview": true,
+      "homeButton": {
+        "text": "kuniVPN apps",
+        "width": 167.953125,
+        "height": 53,
+        "fontSize": "16px",
+        "radius": "10px",
+        "icons": 0
+      }
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "faq": true,
+      "preview": true,
+      "homeButton": {
+        "text": "kuniVPN apps",
+        "width": 167.953125,
+        "height": 53,
+        "fontSize": "16px",
+        "radius": "10px",
+        "icons": 0
+      }
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "faq": true,
+      "preview": true,
+      "homeButton": {
+        "text": "kuniVPN apps",
+        "width": 167.953125,
+        "height": 53,
+        "fontSize": "16px",
+        "radius": "10px",
+        "icons": 0
+      }
+    }
+  ],
+  "errors": []
+}

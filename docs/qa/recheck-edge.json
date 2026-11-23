@@ -1,0 +1,50 @@
+{
+  "observations": [
+    {
+      "name": "FAQ direct anchor 320 RU",
+      "data": {
+        "headerBottom": 182,
+        "summary": {
+          "x": 18,
+          "y": 176.4375,
+          "width": 284,
+          "height": 44,
+          "top": 176.4375,
+          "right": 302,
+          "bottom": 220.4375,
+          "left": 18
+        }
+      }
+    },
+    {
+      "name": "reopen while previous submit pending",
+      "data": {
+        "plan": "yearly",
+        "email": "",
+        "disabled": true,
+        "busy": "true",
+        "message": ""
+      }
+    },
+    {
+      "name": "old result after reopen",
+      "data": {
+        "plan": "yearly",
+        "message": "Сервис недоступен: API не подключён. Данные не отправлены."
+      }
+    },
+    {
+      "name": "active subscription plan count",
+      "data": 2
+    },
+    {
+      "name": "computed flat-background text contrast",
+      "data": {
+        "count": 128,
+        "failures": [],
+        "note": "Opaque flat backgrounds only; excludes images, gradients, opacity compositing and disabled controls."
+      }
+    }
+  ],
+  "errors": []
+}

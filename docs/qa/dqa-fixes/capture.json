@@ -1,0 +1,1170 @@
+{
+  "environment": {
+    "node": "v22.23.5",
+    "date": "2026-11-20T16:21:27.735Z"
+  },
+  "geometry": [
+    {
+      "width": 320,
+      "language": "en",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 182,
+        "width": 320,
+        "height": 678.578125
+      },
+      "art": {
+        "x": 6,
+        "y": 642.15625,
+        "width": 308,
+        "height": 182.421875
+      }
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "section": "features",
+      "viewportHeight": 1682,
+      "box": {
+        "x": 0,
+        "y": 256.578125,
+        "width": 320,
+        "height": 1425.0625
+      },
+      "art": {
+        "x": 18,
+        "y": 684.8125,
+        "width": 284,
+        "height": 147.71875
+      }
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "section": "apps",
+      "viewportHeight": 2506,
+      "box": {
+        "x": 0,
+        "y": 256.640625,
+        "width": 320,
+        "height": 2249.53125
+      },
+      "art": {
+        "x": 18,
+        "y": 566.46875,
+        "width": 284,
+        "height": 122.703125
+      }
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "section": "security",
+      "viewportHeight": 1300,
+      "box": {
+        "x": 0,
+        "y": 227.171875,
+        "width": 320,
+        "height": 1043.03125
+      },
+      "art": {
+        "x": 18,
+        "y": 991.3125,
+        "width": 284,
+        "height": 242.890625
+      }
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "section": "support",
+      "viewportHeight": 2311,
+      "box": {
+        "x": 0,
+        "y": 257.203125,
+        "width": 320,
+        "height": 2054.265625
+      },
+      "art": {
+        "x": 18,
+        "y": 862.9375,
+        "width": 284,
+        "height": 197.53125
+      }
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "section": "plans",
+      "viewportHeight": 3171,
+      "box": {
+        "x": 0,
+        "y": 256.46875,
+        "width": 320,
+        "height": 2914.609375
+      },
+      "art": null
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "section": "login",
+      "viewportHeight": 1425,
+      "box": {
+        "x": 0,
+        "y": 227.078125,
+        "width": 320,
+        "height": 1168.796875
+      },
+      "art": null
+    },
+    {
+      "width": 320,
+      "language": "ru",
+      "section": "home",
+      "viewportHeight": 1005,
+      "box": {
+        "x": 0,
+        "y": 182,
+        "width": 320,
+        "height": 748.171875
+      },
+      "art": {
+        "x": 6,
+        "y": 711.75,
+        "width": 308,
+        "height": 182.421875
+      }
+    },
+    {
+      "width": 320,
+      "language": "ru",
+      "section": "features",
+      "viewportHeight": 1756,
+      "box": {
+        "x": 0,
+        "y": 256.171875,
+        "width": 320,
+        "height": 1499.875
+      },
+      "art": {
+        "x": 18,
+        "y": 742.828125,
+        "width": 284,
+        "height": 147.71875
+      }
+    },
+    {
+      "width": 320,
+      "language": "ru",
+      "section": "apps",
+      "viewportHeight": 2569,
+      "box": {
+        "x": 0,
+        "y": 256.046875,
+        "width": 320,
+        "height": 2312.75
+      },
+      "art": {
+        "x": 18,
+        "y": 629.09375,
+        "width": 284,
+        "height": 122.703125
+      }
+    },
+    {
+      "width": 320,
+      "language": "ru",
+      "section": "security",
+      "viewportHeight": 1411,
+      "box": {
+        "x": 0,
+        "y": 226.796875,
+        "width": 320,
+        "height": 1154.625
+      },
+      "art": {
+        "x": 18,
+        "y": 1102.53125,
+        "width": 284,
+        "height": 242.890625
+      }
+    },
+    {
+      "width": 320,
+      "language": "ru",
+      "section": "support",
+      "viewportHeight": 2363,
+      "box": {
+        "x": 0,
+        "y": 256.421875,
+        "width": 320,
+        "height": 2106.265625
+      },
+      "art": {
+        "x": 18,
+        "y": 914.15625,
+        "width": 284,
+        "height": 197.53125
+      }
+    },
+    {
+      "width": 320,
+      "language": "ru",
+      "section": "plans",
+      "viewportHeight": 3400,
+      "box": {
+        "x": 0,
+        "y": 256.6875,
+        "width": 320,
+        "height": 3143.703125
+      },
+      "art": null
+    },
+    {
+      "width": 320,
+      "language": "ru",
+      "section": "login",
+      "viewportHeight": 1483,
+      "box": {
+        "x": 0,
+        "y": 227.390625,
+        "width": 320,
+        "height": 1226.703125
+      },
+      "art": null
+    },
+    {
+      "width": 375,
+      "language": "en",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 126,
+        "width": 375,
+        "height": 688.75
+      },
+      "art": {
+        "x": 6,
+        "y": 563.765625,
+        "width": 363,
+        "height": 214.984375
+      }
+    },
+    {
+      "width": 375,
+      "language": "en",
+      "section": "features",
+      "viewportHeight": 1575,
+      "box": {
+        "x": 0,
+        "y": 255.75,
+        "width": 375,
+        "height": 1318.875
+      },
+      "art": {
+        "x": 18,
+        "y": 620.765625,
+        "width": 339,
+        "height": 176.328125
+      }
+    },
+    {
+      "width": 375,
+      "language": "en",
+      "section": "apps",
+      "viewportHeight": 2530,
+      "box": {
+        "x": 0,
+        "y": 256.625,
+        "width": 375,
+        "height": 2273.296875
+      },
+      "art": {
+        "x": 18,
+        "y": 566.453125,
+        "width": 339,
+        "height": 146.46875
+      }
+    },
+    {
+      "width": 375,
+      "language": "en",
+      "section": "security",
+      "viewportHeight": 1271,
+      "box": {
+        "x": 0,
+        "y": 198.921875,
+        "width": 375,
+        "height": 1014.5
+      },
+      "art": {
+        "x": 18,
+        "y": 887.5,
+        "width": 339,
+        "height": 289.921875
+      }
+    },
+    {
+      "width": 375,
+      "language": "en",
+      "section": "support",
+      "viewportHeight": 2349,
+      "box": {
+        "x": 0,
+        "y": 256.421875,
+        "width": 375,
+        "height": 2092.515625
+      },
+      "art": {
+        "x": 18,
+        "y": 862.15625,
+        "width": 339,
+        "height": 235.78125
+      }
+    },
+    {
+      "width": 375,
+      "language": "en",
+      "section": "plans",
+      "viewportHeight": 3075,
+      "box": {
+        "x": 0,
+        "y": 255.9375,
+        "width": 375,
+        "height": 2818.609375
+      },
+      "art": null
+    },
+    {
+      "width": 375,
+      "language": "en",
+      "section": "login",
+      "viewportHeight": 1375,
+      "box": {
+        "x": 0,
+        "y": 199.546875,
+        "width": 375,
+        "height": 1118.796875
+      },
+      "art": null
+    },
+    {
+      "width": 375,
+      "language": "ru",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 126,
+        "width": 375,
+        "height": 731.15625
+      },
+      "art": {
+        "x": 6,
+        "y": 606.171875,
+        "width": 363,
+        "height": 214.984375
+      }
+    },
+    {
+      "width": 375,
+      "language": "ru",
+      "section": "features",
+      "viewportHeight": 1655,
+      "box": {
+        "x": 0,
+        "y": 256.15625,
+        "width": 375,
+        "height": 1398.890625
+      },
+      "art": {
+        "x": 18,
+        "y": 657.203125,
+        "width": 339,
+        "height": 176.328125
+      }
+    },
+    {
+      "width": 375,
+      "language": "ru",
+      "section": "apps",
+      "viewportHeight": 2566,
+      "box": {
+        "x": 0,
+        "y": 257.046875,
+        "width": 375,
+        "height": 2309.328125
+      },
+      "art": {
+        "x": 18,
+        "y": 602.90625,
+        "width": 339,
+        "height": 146.46875
+      }
+    },
+    {
+      "width": 375,
+      "language": "ru",
+      "section": "security",
+      "viewportHeight": 1331,
+      "box": {
+        "x": 0,
+        "y": 199.375,
+        "width": 375,
+        "height": 1074.90625
+      },
+      "art": {
+        "x": 18,
+        "y": 948.359375,
+        "width": 339,
+        "height": 289.921875
+      }
+    },
+    {
+      "width": 375,
+      "language": "ru",
+      "section": "support",
+      "viewportHeight": 2349,
+      "box": {
+        "x": 0,
+        "y": 256.28125,
+        "width": 375,
+        "height": 2092.515625
+      },
+      "art": {
+        "x": 18,
+        "y": 862.015625,
+        "width": 339,
+        "height": 235.78125
+      }
+    },
+    {
+      "width": 375,
+      "language": "ru",
+      "section": "plans",
+      "viewportHeight": 3171,
+      "box": {
+        "x": 0,
+        "y": 256.796875,
+        "width": 375,
+        "height": 2914.609375
+      },
+      "art": null
+    },
+    {
+      "width": 375,
+      "language": "ru",
+      "section": "login",
+      "viewportHeight": 1375,
+      "box": {
+        "x": 0,
+        "y": 199.40625,
+        "width": 375,
+        "height": 1118.796875
+      },
+      "art": null
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 126,
+        "width": 390,
+        "height": 670.453125
+      },
+      "art": {
+        "x": 6,
+        "y": 536.578125,
+        "width": 378,
+        "height": 223.875
+      }
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "section": "features",
+      "viewportHeight": 1583,
+      "box": {
+        "x": 0,
+        "y": 256.453125,
+        "width": 390,
+        "height": 1326.671875
+      },
+      "art": {
+        "x": 18,
+        "y": 621.46875,
+        "width": 354,
+        "height": 184.125
+      }
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "section": "apps",
+      "viewportHeight": 2536,
+      "box": {
+        "x": 0,
+        "y": 256.125,
+        "width": 390,
+        "height": 2279.78125
+      },
+      "art": {
+        "x": 18,
+        "y": 565.953125,
+        "width": 354,
+        "height": 152.953125
+      }
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "section": "security",
+      "viewportHeight": 1284,
+      "box": {
+        "x": 0,
+        "y": 198.90625,
+        "width": 390,
+        "height": 1027.328125
+      },
+      "art": {
+        "x": 18,
+        "y": 887.484375,
+        "width": 354,
+        "height": 302.75
+      }
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "section": "support",
+      "viewportHeight": 2360,
+      "box": {
+        "x": 0,
+        "y": 256.234375,
+        "width": 390,
+        "height": 2103.796875
+      },
+      "art": {
+        "x": 18,
+        "y": 862.8125,
+        "width": 354,
+        "height": 246.21875
+      }
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "section": "plans",
+      "viewportHeight": 3075,
+      "box": {
+        "x": 0,
+        "y": 256.03125,
+        "width": 390,
+        "height": 2818.609375
+      },
+      "art": null
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "section": "login",
+      "viewportHeight": 1375,
+      "box": {
+        "x": 0,
+        "y": 198.640625,
+        "width": 390,
+        "height": 1118.796875
+      },
+      "art": null
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 126,
+        "width": 390,
+        "height": 740.046875
+      },
+      "art": {
+        "x": 6,
+        "y": 606.171875,
+        "width": 378,
+        "height": 223.875
+      }
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "section": "features",
+      "viewportHeight": 1627,
+      "box": {
+        "x": 0,
+        "y": 256.046875,
+        "width": 390,
+        "height": 1370.65625
+      },
+      "art": {
+        "x": 18,
+        "y": 621.0625,
+        "width": 354,
+        "height": 184.125
+      }
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "section": "apps",
+      "viewportHeight": 2572,
+      "box": {
+        "x": 0,
+        "y": 255.703125,
+        "width": 390,
+        "height": 2315.8125
+      },
+      "art": {
+        "x": 18,
+        "y": 601.5625,
+        "width": 354,
+        "height": 152.953125
+      }
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "section": "security",
+      "viewportHeight": 1344,
+      "box": {
+        "x": 0,
+        "y": 199.515625,
+        "width": 390,
+        "height": 1087.734375
+      },
+      "art": {
+        "x": 18,
+        "y": 948.5,
+        "width": 354,
+        "height": 302.75
+      }
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "section": "support",
+      "viewportHeight": 2360,
+      "box": {
+        "x": 0,
+        "y": 256.25,
+        "width": 390,
+        "height": 2103.796875
+      },
+      "art": {
+        "x": 18,
+        "y": 862.828125,
+        "width": 354,
+        "height": 246.21875
+      }
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "section": "plans",
+      "viewportHeight": 3147,
+      "box": {
+        "x": 0,
+        "y": 256.046875,
+        "width": 390,
+        "height": 2890.609375
+      },
+      "art": null
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "section": "login",
+      "viewportHeight": 1375,
+      "box": {
+        "x": 0,
+        "y": 198.65625,
+        "width": 390,
+        "height": 1118.796875
+      },
+      "art": null
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 96,
+        "width": 1440,
+        "height": 710
+      },
+      "art": {
+        "x": 374.40625,
+        "y": 174.875,
+        "width": 1065.59375,
+        "height": 631.125
+      }
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "section": "features",
+      "viewportHeight": 1256,
+      "box": {
+        "x": 0,
+        "y": 256,
+        "width": 1440,
+        "height": 999.96875
+      },
+      "art": {
+        "x": 547.203125,
+        "y": 377.046875,
+        "width": 892.796875,
+        "height": 463.953125
+      }
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "section": "apps",
+      "viewportHeight": 1370,
+      "box": {
+        "x": 0,
+        "y": 255.96875,
+        "width": 1440,
+        "height": 1113.59375
+      },
+      "art": {
+        "x": 531.265625,
+        "y": 368.53125,
+        "width": 861.0625,
+        "height": 372.4375
+      }
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "section": "security",
+      "viewportHeight": 1016,
+      "box": {
+        "x": 0,
+        "y": 183.5625,
+        "width": 1440,
+        "height": 760
+      },
+      "art": {
+        "x": 561.609375,
+        "y": 203.5625,
+        "width": 878.390625,
+        "height": 720
+      }
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "section": "support",
+      "viewportHeight": 1581,
+      "box": {
+        "x": 0,
+        "y": 255.5625,
+        "width": 1440,
+        "height": 1325
+      },
+      "art": {
+        "x": 706.96875,
+        "y": 397.171875,
+        "width": 665.359375,
+        "height": 463.390625
+      }
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "section": "plans",
+      "viewportHeight": 1385,
+      "box": {
+        "x": 0,
+        "y": 184.5625,
+        "width": 1440,
+        "height": 1128.515625
+      },
+      "art": null
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "section": "login",
+      "viewportHeight": 1117,
+      "box": {
+        "x": 0,
+        "y": 184.078125,
+        "width": 1440,
+        "height": 860.703125
+      },
+      "art": null
+    },
+    {
+      "width": 1440,
+      "language": "ru",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 96,
+        "width": 1440,
+        "height": 710
+      },
+      "art": {
+        "x": 374.40625,
+        "y": 174.875,
+        "width": 1065.59375,
+        "height": 631.125
+      }
+    },
+    {
+      "width": 1440,
+      "language": "ru",
+      "section": "features",
+      "viewportHeight": 1256,
+      "box": {
+        "x": 0,
+        "y": 256,
+        "width": 1440,
+        "height": 999.96875
+      },
+      "art": {
+        "x": 547.203125,
+        "y": 377.046875,
+        "width": 892.796875,
+        "height": 463.953125
+      }
+    },
+    {
+      "width": 1440,
+      "language": "ru",
+      "section": "apps",
+      "viewportHeight": 1389,
+      "box": {
+        "x": 0,
+        "y": 255.96875,
+        "width": 1440,
+        "height": 1132.59375
+      },
+      "art": {
+        "x": 531.265625,
+        "y": 368.53125,
+        "width": 861.0625,
+        "height": 372.4375
+      }
+    },
+    {
+      "width": 1440,
+      "language": "ru",
+      "section": "security",
+      "viewportHeight": 1102,
+      "box": {
+        "x": 0,
+        "y": 184.5625,
+        "width": 1440,
+        "height": 845.3125
+      },
+      "art": {
+        "x": 561.609375,
+        "y": 204.5625,
+        "width": 878.390625,
+        "height": 805.3125
+      }
+    },
+    {
+      "width": 1440,
+      "language": "ru",
+      "section": "support",
+      "viewportHeight": 1581,
+      "box": {
+        "x": 0,
+        "y": 255.875,
+        "width": 1440,
+        "height": 1325
+      },
+      "art": {
+        "x": 706.96875,
+        "y": 397.484375,
+        "width": 665.359375,
+        "height": 463.390625
+      }
+    },
+    {
+      "width": 1440,
+      "language": "ru",
+      "section": "plans",
+      "viewportHeight": 1456,
+      "box": {
+        "x": 0,
+        "y": 183.875,
+        "width": 1440,
+        "height": 1199.515625
+      },
+      "art": null
+    },
+    {
+      "width": 1440,
+      "language": "ru",
+      "section": "login",
+      "viewportHeight": 1117,
+      "box": {
+        "x": 0,
+        "y": 184.390625,
+        "width": 1440,
+        "height": 860.703125
+      },
+      "art": null
+    },
+    {
+      "width": 1672,
+      "language": "en",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 96,
+        "width": 1672,
+        "height": 710
+      },
+      "art": {
+        "x": 480,
+        "y": 100,
+        "width": 1192,
+        "height": 706
+      }
+    },
+    {
+      "width": 1672,
+      "language": "en",
+      "section": "features",
+      "viewportHeight": 1256,
+      "box": {
+        "x": 0,
+        "y": 256,
+        "width": 1672,
+        "height": 999.96875
+      },
+      "art": {
+        "x": 635.375,
+        "y": 302.296875,
+        "width": 1036.625,
+        "height": 538.703125
+      }
+    },
+    {
+      "width": 1672,
+      "language": "en",
+      "section": "apps",
+      "viewportHeight": 1370,
+      "box": {
+        "x": 0,
+        "y": 255.96875,
+        "width": 1672,
+        "height": 1113.59375
+      },
+      "art": {
+        "x": 613.625,
+        "y": 308.515625,
+        "width": 999.796875,
+        "height": 432.453125
+      }
+    },
+    {
+      "width": 1672,
+      "language": "en",
+      "section": "security",
+      "viewportHeight": 1016,
+      "box": {
+        "x": 0,
+        "y": 183.5625,
+        "width": 1672,
+        "height": 760
+      },
+      "art": {
+        "x": 652.09375,
+        "y": 203.5625,
+        "width": 1019.90625,
+        "height": 720
+      }
+    },
+    {
+      "width": 1672,
+      "language": "en",
+      "section": "support",
+      "viewportHeight": 1581,
+      "box": {
+        "x": 0,
+        "y": 255.5625,
+        "width": 1672,
+        "height": 1325
+      },
+      "art": {
+        "x": 820.859375,
+        "y": 322.515625,
+        "width": 772.5625,
+        "height": 538.046875
+      }
+    },
+    {
+      "width": 1672,
+      "language": "en",
+      "section": "plans",
+      "viewportHeight": 1386,
+      "box": {
+        "x": 0,
+        "y": 184.5625,
+        "width": 1672,
+        "height": 1129.1875
+      },
+      "art": null
+    },
+    {
+      "width": 1672,
+      "language": "en",
+      "section": "login",
+      "viewportHeight": 1117,
+      "box": {
+        "x": 0,
+        "y": 183.75,
+        "width": 1672,
+        "height": 860.703125
+      },
+      "art": null
+    },
+    {
+      "width": 1672,
+      "language": "ru",
+      "section": "home",
+      "viewportHeight": 1000,
+      "box": {
+        "x": 0,
+        "y": 96,
+        "width": 1672,
+        "height": 736.453125
+      },
+      "art": {
+        "x": 480,
+        "y": 126.453125,
+        "width": 1192,
+        "height": 706
+      }
+    },
+    {
+      "width": 1672,
+      "language": "ru",
+      "section": "features",
+      "viewportHeight": 1256,
+      "box": {
+        "x": 0,
+        "y": 256.453125,
+        "width": 1672,
+        "height": 999.96875
+      },
+      "art": {
+        "x": 635.375,
+        "y": 302.75,
+        "width": 1036.625,
+        "height": 538.703125
+      }
+    },
+    {
+      "width": 1672,
+      "language": "ru",
+      "section": "apps",
+      "viewportHeight": 1370,
+      "box": {
+        "x": 0,
+        "y": 256.421875,
+        "width": 1672,
+        "height": 1113.59375
+      },
+      "art": {
+        "x": 613.625,
+        "y": 308.96875,
+        "width": 999.796875,
+        "height": 432.453125
+      }
+    },
+    {
+      "width": 1672,
+      "language": "ru",
+      "section": "security",
+      "viewportHeight": 1102,
+      "box": {
+        "x": 0,
+        "y": 184.015625,
+        "width": 1672,
+        "height": 845.3125
+      },
+      "art": {
+        "x": 652.09375,
+        "y": 204.015625,
+        "width": 1019.90625,
+        "height": 805.3125
+      }
+    },
+    {
+      "width": 1672,
+      "language": "ru",
+      "section": "support",
+      "viewportHeight": 1581,
+      "box": {
+        "x": 0,
+        "y": 256.328125,
+        "width": 1672,
+        "height": 1325
+      },
+      "art": {
+        "x": 820.859375,
+        "y": 323.28125,
+        "width": 772.5625,
+        "height": 538.046875
+      }
+    },
+    {
+      "width": 1672,
+      "language": "ru",
+      "section": "plans",
+      "viewportHeight": 1410,
+      "box": {
+        "x": 0,
+        "y": 184.328125,
+        "width": 1672,
+        "height": 1153.1875
+      },
+      "art": null
+    },
+    {
+      "width": 1672,
+      "language": "ru",
+      "section": "login",
+      "viewportHeight": 1117,
+      "box": {
+        "x": 0,
+        "y": 184.515625,
+        "width": 1672,
+        "height": 860.703125
+      },
+      "art": null
+    }
+  ],
+  "errors": [],
+  "cropNote": "Actuals are individual sections with header/skip hidden only for screenshots. References are full original PNGs, including header. CSS scale in the gallery is equal for a given viewport, not pixel-diff."
+}

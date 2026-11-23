@@ -1,0 +1,304 @@
+[
+  {
+    "name": "os-windows",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 95,
+      "top": 511,
+      "width": 60,
+      "height": 62
+    },
+    "output": "src/assets/images/os-windows.png",
+    "alpha": true,
+    "mobile": "os-windows-small.webp",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "os-macos",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 418,
+      "top": 506,
+      "width": 55,
+      "height": 67
+    },
+    "output": "src/assets/images/os-macos.png",
+    "alpha": true,
+    "mobile": "os-macos-small.webp",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "os-ios",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 418,
+      "top": 506,
+      "width": 55,
+      "height": 67
+    },
+    "output": "src/assets/images/os-ios.png",
+    "alpha": true,
+    "mobile": "os-ios-small.webp",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "os-android",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 1030,
+      "top": 506,
+      "width": 60,
+      "height": 67
+    },
+    "output": "src/assets/images/os-android.png",
+    "alpha": true,
+    "mobile": "os-android-small.webp",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "os-linux",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 1330,
+      "top": 506,
+      "width": 56,
+      "height": 65
+    },
+    "output": "src/assets/images/os-linux.png",
+    "alpha": true,
+    "mobile": "os-linux-small.webp",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "mascot",
+    "source": "docs/images/consept/desktop/../mobile/01-home.png",
+    "crop": {
+      "left": 320,
+      "top": 340,
+      "width": 360,
+      "height": 220
+    },
+    "output": "src/assets/images/mascot.webp",
+    "alpha": false,
+    "mobile": "mascot-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "logo-horizontal-light",
+    "source": "docs/images/consept/desktop/logo-refined-03.png",
+    "crop": {
+      "left": 1010,
+      "top": 800,
+      "width": 510,
+      "height": 150
+    },
+    "output": "src/assets/images/logo-horizontal-light.png",
+    "alpha": true,
+    "mobile": "same",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "logo-horizontal",
+    "source": "docs/images/consept/desktop/logo-refined-03.png",
+    "crop": {
+      "left": 445,
+      "top": 800,
+      "width": 480,
+      "height": 150
+    },
+    "output": "src/assets/images/logo-horizontal.png",
+    "alpha": true,
+    "mobile": "same",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "logo-vertical",
+    "source": "docs/images/consept/desktop/logo-refined-03.png",
+    "crop": {
+      "left": 350,
+      "top": 80,
+      "width": 830,
+      "height": 590
+    },
+    "output": "src/assets/images/logo-vertical.png",
+    "alpha": true,
+    "mobile": "same",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "logo-shield",
+    "source": "docs/images/consept/desktop/logo-refined-03.png",
+    "crop": {
+      "left": 535,
+      "top": 270,
+      "width": 460,
+      "height": 320
+    },
+    "output": "src/assets/images/logo-shield.png",
+    "alpha": true,
+    "mobile": "same",
+    "limitation": "Black backing removed; original geometry retained."
+  },
+  {
+    "name": "home-art",
+    "source": "docs/images/consept/desktop/01-home.png",
+    "crop": {
+      "left": 480,
+      "top": 70,
+      "width": 1192,
+      "height": 730
+    },
+    "output": "src/assets/images/home-art.webp",
+    "alpha": true,
+    "mobile": "home-art-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "features-art",
+    "source": "docs/images/consept/desktop/02-features.png",
+    "crop": {
+      "left": 680,
+      "top": 94,
+      "width": 991,
+      "height": 515
+    },
+    "output": "src/assets/images/features-art.webp",
+    "alpha": true,
+    "mobile": "features-art-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "apps-art",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 550,
+      "top": 74,
+      "width": 1121,
+      "height": 440
+    },
+    "output": "src/assets/images/apps-art.webp",
+    "alpha": true,
+    "mobile": "apps-art-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "security-art",
+    "source": "docs/images/consept/desktop/04-security.png",
+    "crop": {
+      "left": 650,
+      "top": 94,
+      "width": 1021,
+      "height": 835
+    },
+    "output": "src/assets/images/security-art.webp",
+    "alpha": true,
+    "mobile": "security-art-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "support-art",
+    "source": "docs/images/consept/desktop/05-support.png",
+    "crop": {
+      "left": 820,
+      "top": 94,
+      "width": 851,
+      "height": 530
+    },
+    "output": "src/assets/images/support-art.webp",
+    "alpha": true,
+    "mobile": "support-art-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "windows-device",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 87,
+      "top": 600,
+      "width": 260,
+      "height": 157
+    },
+    "output": "src/assets/images/windows-device.webp",
+    "alpha": true,
+    "mobile": "windows-device-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "macos-device",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 405,
+      "top": 600,
+      "width": 260,
+      "height": 157
+    },
+    "output": "src/assets/images/macos-device.webp",
+    "alpha": true,
+    "mobile": "macos-device-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "ios-device",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 775,
+      "top": 595,
+      "width": 165,
+      "height": 165
+    },
+    "output": "src/assets/images/ios-device.webp",
+    "alpha": true,
+    "mobile": "ios-device-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "android-device",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 1075,
+      "top": 588,
+      "width": 165,
+      "height": 172
+    },
+    "output": "src/assets/images/android-device.webp",
+    "alpha": true,
+    "mobile": "android-device-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "linux-device",
+    "source": "docs/images/consept/desktop/03-apps.png",
+    "crop": {
+      "left": 1320,
+      "top": 600,
+      "width": 260,
+      "height": 157
+    },
+    "output": "src/assets/images/linux-device.webp",
+    "alpha": true,
+    "mobile": "linux-device-small.webp",
+    "limitation": "Masked flattened composition on dark surface; occluded layers unavailable. No whole-section text or navigation retained."
+  },
+  {
+    "name": "torn-top",
+    "source": "docs/images/consept/desktop/02-features.png",
+    "crop": "paper boundary y595–650",
+    "output": "src/assets/images/torn-top.png",
+    "alpha": true,
+    "width": 1671,
+    "height": 64,
+    "mobile": "scaled full width",
+    "limitation": "Boundary sampled from flattened reference; paper color normalized to CSS token."
+  },
+  {
+    "name": "torn-bottom",
+    "source": "docs/images/consept/desktop/02-features.png",
+    "crop": "paper boundary y730–785",
+    "output": "src/assets/images/torn-bottom.png",
+    "alpha": true,
+    "width": 1671,
+    "height": 64,
+    "mobile": "scaled full width",
+    "limitation": "Boundary sampled from flattened reference; paper color normalized to CSS token."
+  }
+]

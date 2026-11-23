@@ -1,0 +1,15 @@
+{
+  "directory": "docs/images/consept",
+  "checkedAfterUserSuppliedPath": true,
+  "totalFiles": 19,
+  "desktop": 10,
+  "mobile": 9,
+  "formats": [
+    "png"
+  ],
+  "allSinglePage": true,
+  "allWithoutAlpha": true,
+  "layeredOrVectorCandidates": [],
+  "usedForExports": true,
+  "remaining": "Exact independent occluded layers cannot be recovered from these flattened references."
+}

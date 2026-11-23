@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-23T07:49:35.980Z",
+  "captures": [
+    "docs/qa/odc-waves/en-1672-home.jpg",
+    "docs/qa/odc-waves/en-1672-features.jpg",
+    "docs/qa/odc-waves/en-1672-apps.jpg",
+    "docs/qa/odc-waves/en-1672-security.jpg",
+    "docs/qa/odc-waves/en-1672-support.jpg",
+    "docs/qa/odc-waves/en-1672-plans.jpg"
+  ],
+  "metrics": [
+    {
+      "width": 1672,
+      "scrollWidth": 1672,
+      "faq": false,
+      "preview": false,
+      "homeButton": {
+        "text": "Download KUNI VPN",
+        "width": 463.0625,
+        "height": 78,
+        "fontSize": "30px",
+        "radius": "22px",
+        "icons": 2
+      }
+    }
+  ],
+  "errors": []
+}

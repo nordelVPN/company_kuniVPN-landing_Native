@@ -1,0 +1,85 @@
+{
+  "assets": [
+    {
+      "name": "home-art",
+      "width": 1192,
+      "height": 730,
+      "alpha": true
+    },
+    {
+      "name": "apps-art",
+      "width": 1121,
+      "height": 440,
+      "alpha": true
+    },
+    {
+      "name": "security-art",
+      "width": 1021,
+      "height": 835,
+      "alpha": true
+    },
+    {
+      "name": "support-art",
+      "width": 851,
+      "height": 530,
+      "alpha": true
+    },
+    {
+      "name": "windows-device",
+      "width": 260,
+      "height": 157,
+      "alpha": true
+    },
+    {
+      "name": "macos-device",
+      "width": 260,
+      "height": 157,
+      "alpha": true
+    },
+    {
+      "name": "ios-device",
+      "width": 165,
+      "height": 165,
+      "alpha": true
+    },
+    {
+      "name": "android-device",
+      "width": 165,
+      "height": 172,
+      "alpha": true
+    },
+    {
+      "name": "linux-device",
+      "width": 260,
+      "height": 157,
+      "alpha": true
+    }
+  ],
+  "contrast": [
+    {
+      "fg": "090706",
+      "bg": "fd7802",
+      "ratio": "7.53"
+    },
+    {
+      "fg": "090706",
+      "bg": "fd8b16",
+      "ratio": "8.50"
+    },
+    {
+      "fg": "fceedc",
+      "bg": "050404",
+      "ratio": "17.94"
+    },
+    {
+      "fg": "c8c0b6",
+      "bg": "0d0c0b",
+      "ratio": "10.86"
+    },
+    {
+      "fg": "4d4942",
+      "bg": "f5e8d4",
+      "ratio": "7.40"
+    }
+  ]
+}
