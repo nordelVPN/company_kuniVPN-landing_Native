@@ -30,7 +30,19 @@ function setLanguage(value) {
  document.dispatchEvent(new window.CustomEvent('languagechange', { detail: { language } }));
 }
 function init() {
- for (const select of document.querySelectorAll('[data-language-select]')) select.addEventListener('change', () => setLanguage(select.value));
+ for (const select of document.querySelectorAll('[data-language-select]')) {
+  if (typeof select.replaceChildren === 'function' && typeof document.createElement === 'function') {
+   select.replaceChildren();
+   for (const code of Object.keys(dictionaries)) {
+    const option = document.createElement('option');
+    option.value = code;
+    option.lang = code;
+    option.textContent = code.toUpperCase();
+    select.appendChild(option);
+   }
+  }
+  select.addEventListener('change', () => setLanguage(select.value));
+ }
  let saved = fallback;
  try { saved = localStorage.getItem(storageKey) || fallback; } catch { /* Use English. */ }
  setLanguage(saved);

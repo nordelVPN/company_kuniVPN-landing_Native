@@ -2,9 +2,19 @@
   "source": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
   "files": [
     {
+      "name": "montserrat-cyrillic-ext-italic.woff2",
+      "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUQjIg1_i6t8kCHKm459WxRxC7mw9c.woff2",
+      "bytes": 26944
+    },
+    {
       "name": "montserrat-cyrillic-italic.woff2",
       "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUQjIg1_i6t8kCHKm459WxRzS7mw9c.woff2",
       "bytes": 24536
+    },
+    {
+      "name": "montserrat-latin-ext-italic.woff2",
+      "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUQjIg1_i6t8kCHKm459WxRxy7mw9c.woff2",
+      "bytes": 74892
     },
     {
       "name": "montserrat-latin-italic.woff2",
@@ -12,9 +22,19 @@
       "bytes": 39632
     },
     {
+      "name": "montserrat-cyrillic-ext-normal.woff2",
+      "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2",
+      "bytes": 26368
+    },
+    {
       "name": "montserrat-cyrillic-normal.woff2",
       "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2",
       "bytes": 23828
+    },
+    {
+      "name": "montserrat-latin-ext-normal.woff2",
+      "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2",
+      "bytes": 70688
     },
     {
       "name": "montserrat-latin-normal.woff2",
