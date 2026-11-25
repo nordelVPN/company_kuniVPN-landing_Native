@@ -1,4 +1,5 @@
 const path = require('node:path');
+const webpack = require('webpack');
 const common = require('./webpack.common');
 
 const port = Number(process.env.PORT || 3004);
@@ -35,6 +36,15 @@ module.exports = {
     }
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __VPN_BUILD_CONFIG__: JSON.stringify({
+        brandSlug,
+        mode: process.env.DATA_MODE || 'live',
+        dashboardApiUrl: process.env.PORTAL_API_URL || 'http://localhost:8081',
+        adminServersApiUrl: serversApiUrl,
+        serversCatalogUrl: process.env.SERVERS_CATALOG_URL || '/_api/servers'
+      })
+    }),
     ...common.plugins,
     {
       apply(compiler) {
