@@ -103,9 +103,29 @@ function initPortalSdkBridge() {
       }, true);
     }
 
+    sdkFactory.initCheckoutReturnPolling(sdk);
+
     var checkoutDialog = document.querySelector('dialog[data-checkout], #checkout-dialog');
     var checkoutForm = checkoutDialog && checkoutDialog.querySelector('form');
     if (checkoutForm) {
+      var getKProvider = function () { return null; };
+      var kProviderHost = checkoutForm.querySelector('[data-payment-providers]');
+      if (!kProviderHost) {
+        kProviderHost = document.createElement('div');
+        kProviderHost.className = 'payment-providers';
+        kProviderHost.setAttribute('data-payment-providers', '');
+        kProviderHost.hidden = true;
+        var kSubmit = checkoutForm.querySelector('button[type="submit"]');
+        if (kSubmit && kSubmit.parentNode) {
+          kSubmit.parentNode.insertBefore(kProviderHost, kSubmit);
+        } else {
+          checkoutForm.appendChild(kProviderHost);
+        }
+      }
+      sdkFactory.mountPaymentProviderSelector(sdk, kProviderHost).then(function (getter) {
+        if (typeof getter === 'function') getKProvider = getter;
+      });
+
       checkoutForm.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!sdk.isAuthenticated()) {
@@ -115,12 +135,17 @@ function initPortalSdkBridge() {
         var planInput = checkoutForm.querySelector('[name="plan"]:checked, [name="plan_code"]');
         var promoInput = checkoutForm.querySelector('[name="promo"], [name="promo_code"]');
         var msgEl = checkoutForm.querySelector('[role="status"], .status');
+        var baseUrl = window.location.origin + window.location.pathname;
         sdk.checkout({
           plan_code: planInput ? planInput.value : 'quarterly',
-          promo_code: promoInput ? promoInput.value.trim() : null
-        }).then(function () {
-          setStatus(msgEl, 'Subscription activated! Redirecting...');
-          window.location.href = './account.html';
+          provider: getKProvider(),
+          promo_code: promoInput ? promoInput.value.trim() : null,
+          return_url: baseUrl,
+          cancel_url: baseUrl + '?status=cancelled'
+        }).then(function (res) {
+          var target = res && res.checkout && res.checkout.checkout_url;
+          setStatus(msgEl, 'Redirecting to payment provider...');
+          window.location.href = target || './account.html';
         }).catch(function (err) {
           setStatus(msgEl, (err && err.message) || 'Checkout failed.');
         });
