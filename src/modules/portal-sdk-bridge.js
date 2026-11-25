@@ -42,6 +42,7 @@ function initPortalSdkBridge() {
   }
 
   if (sdk.mode === 'live') {
+    document.querySelectorAll('.prototype-note').forEach(function (el) { el.hidden = true; });
     var loginForm = document.querySelector('#login form, form[data-form="login"]');
     if (loginForm) {
       loginForm.addEventListener('submit', function (e) {
@@ -138,7 +139,7 @@ function initPortalSdkBridge() {
           window.location.href = './login.html';
           return;
         }
-        var planInput = checkoutForm.querySelector('[name="plan"]:checked, [name="plan_code"], [name="plan"]');
+        var planInput = checkoutDialog.querySelector('#checkout-plan, [data-plan], [name="plan"]:checked, [name="plan_code"], [name="plan"]');
         var promoInput = checkoutForm.querySelector('[name="promo"], [name="promo_code"]');
         var msgEl = checkoutForm.querySelector('[role="status"], .status, [data-checkout-message]');
         var returnUrl = new URL('./account.html', window.location.href).href;
