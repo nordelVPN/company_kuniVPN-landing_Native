@@ -397,7 +397,13 @@
     "Next renewal": "Next renewal",
     "Price": "Price",
     "Not available": "Not available",
-    "Plan details": "Plan details"
+    "Plan details": "Plan details",
+    "Privacy Policy": "Privacy Policy",
+    "Terms of Use": "Terms of Use",
+    "Privacy Policy — kuniVPN": "Privacy Policy — kuniVPN",
+    "Terms of Use — kuniVPN": "Terms of Use — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "kuniVPN Privacy Policy.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "kuniVPN Terms of Use."
   },
   "ru": {
     "Свобода для": "Свобода для",
@@ -797,7 +803,13 @@
     "Next renewal": "Следующее продление",
     "Price": "Цена",
     "Not available": "Нет данных",
-    "Plan details": "Условия тарифа"
+    "Plan details": "Условия тарифа",
+    "Privacy Policy": "Политика конфиденциальности",
+    "Terms of Use": "Условия использования",
+    "Privacy Policy — kuniVPN": "Политика конфиденциальности — kuniVPN",
+    "Terms of Use — kuniVPN": "Условия использования — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Политика конфиденциальности kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Условия использования kuniVPN."
   },
   "pl": {
     "Свобода для": "Wolność dla",
@@ -1197,7 +1209,13 @@
     "Next renewal": "Następne odnowienie",
     "Price": "Cena",
     "Not available": "Niedostępne",
-    "Plan details": "Szczegóły planu"
+    "Plan details": "Szczegóły planu",
+    "Privacy Policy": "Polityka prywatności",
+    "Terms of Use": "Warunki korzystania",
+    "Privacy Policy — kuniVPN": "Polityka prywatności — kuniVPN",
+    "Terms of Use — kuniVPN": "Warunki korzystania — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Polityka prywatności kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Warunki korzystania z kuniVPN."
   },
   "uk": {
     "Свобода для": "Свобода для",
@@ -1597,7 +1615,13 @@
     "Next renewal": "Наступне продовження",
     "Price": "Ціна",
     "Not available": "Недоступно",
-    "Plan details": "Деталі тарифу"
+    "Plan details": "Деталі тарифу",
+    "Privacy Policy": "Політика конфіденційності",
+    "Terms of Use": "Умови використання",
+    "Privacy Policy — kuniVPN": "Політика конфіденційності — kuniVPN",
+    "Terms of Use — kuniVPN": "Умови використання — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Політика конфіденційності kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Умови використання kuniVPN."
   },
   "lt": {
     "Свобода для": "Laisvė",
@@ -1997,7 +2021,13 @@
     "Next renewal": "Kitas pratęsimas",
     "Price": "Kaina",
     "Not available": "Nepasiekiama",
-    "Plan details": "Plano detalės"
+    "Plan details": "Plano detalės",
+    "Privacy Policy": "Privatumo politika",
+    "Terms of Use": "Naudojimo sąlygos",
+    "Privacy Policy — kuniVPN": "Privatumo politika — kuniVPN",
+    "Terms of Use — kuniVPN": "Naudojimo sąlygos — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "kuniVPN privatumo politika.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "kuniVPN naudojimo sąlygos."
   },
   "tr": {
     "Свобода для": "İnternetin için",
@@ -2397,7 +2427,13 @@
     "Next renewal": "Sonraki yenileme",
     "Price": "Fiyat",
     "Not available": "Mevcut değil",
-    "Plan details": "Plan ayrıntıları"
+    "Plan details": "Plan ayrıntıları",
+    "Privacy Policy": "Gizlilik Politikası",
+    "Terms of Use": "Kullanım Koşulları",
+    "Privacy Policy — kuniVPN": "Gizlilik Politikası — kuniVPN",
+    "Terms of Use — kuniVPN": "Kullanım Koşulları — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "kuniVPN Gizlilik Politikası.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "kuniVPN Kullanım Koşulları."
   },
   "ro": {
     "Свобода для": "Libertate pentru",
@@ -2797,7 +2833,13 @@
     "Next renewal": "Următoarea reînnoire",
     "Price": "Preț",
     "Not available": "Indisponibil",
-    "Plan details": "Detalii plan"
+    "Plan details": "Detalii plan",
+    "Privacy Policy": "Politica de confidențialitate",
+    "Terms of Use": "Termeni de utilizare",
+    "Privacy Policy — kuniVPN": "Politica de confidențialitate — kuniVPN",
+    "Terms of Use — kuniVPN": "Termeni de utilizare — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Politica de confidențialitate kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Termeni de utilizare kuniVPN."
   },
   "de": {
     "Свобода для": "Freiheit für",
@@ -3197,7 +3239,13 @@
     "Next renewal": "Nächste Verlängerung",
     "Price": "Preis",
     "Not available": "Nicht verfügbar",
-    "Plan details": "Tarifdetails"
+    "Plan details": "Tarifdetails",
+    "Privacy Policy": "Datenschutzrichtlinie",
+    "Terms of Use": "Nutzungsbedingungen",
+    "Privacy Policy — kuniVPN": "Datenschutzrichtlinie — kuniVPN",
+    "Terms of Use — kuniVPN": "Nutzungsbedingungen — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Datenschutzrichtlinie von kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Nutzungsbedingungen von kuniVPN."
   },
   "sk": {
     "Свобода для": "Sloboda pre",
@@ -3597,7 +3645,13 @@
     "Next renewal": "Ďalšie obnovenie",
     "Price": "Cena",
     "Not available": "Nedostupné",
-    "Plan details": "Podrobnosti plánu"
+    "Plan details": "Podrobnosti plánu",
+    "Privacy Policy": "Zásady ochrany osobných údajov",
+    "Terms of Use": "Podmienky používania",
+    "Privacy Policy — kuniVPN": "Zásady ochrany osobných údajov — kuniVPN",
+    "Terms of Use — kuniVPN": "Podmienky používania — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Zásady ochrany osobných údajov kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Podmienky používania kuniVPN."
   },
   "hr": {
     "Свобода для": "Sloboda za",
@@ -3997,7 +4051,13 @@
     "Next renewal": "Sljedeća obnova",
     "Price": "Cijena",
     "Not available": "Nedostupno",
-    "Plan details": "Detalji plana"
+    "Plan details": "Detalji plana",
+    "Privacy Policy": "Politika privatnosti",
+    "Terms of Use": "Uvjeti korištenja",
+    "Privacy Policy — kuniVPN": "Politika privatnosti — kuniVPN",
+    "Terms of Use — kuniVPN": "Uvjeti korištenja — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Politika privatnosti kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Uvjeti korištenja kuniVPN."
   },
   "sr": {
     "Свобода для": "Sloboda za",
@@ -4397,7 +4457,13 @@
     "Next renewal": "Sledeća obnova",
     "Price": "Cena",
     "Not available": "Nedostupno",
-    "Plan details": "Detalji plana"
+    "Plan details": "Detalji plana",
+    "Privacy Policy": "Politika privatnosti",
+    "Terms of Use": "Uslovi korišćenja",
+    "Privacy Policy — kuniVPN": "Politika privatnosti — kuniVPN",
+    "Terms of Use — kuniVPN": "Uslovi korišćenja — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Politika privatnosti kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Uslovi korišćenja kuniVPN."
   },
   "bg": {
     "Свобода для": "Свобода за",
@@ -4797,7 +4863,13 @@
     "Next renewal": "Следващо подновяване",
     "Price": "Цена",
     "Not available": "Не е налично",
-    "Plan details": "Детайли на плана"
+    "Plan details": "Детайли на плана",
+    "Privacy Policy": "Политика за поверителност",
+    "Terms of Use": "Условия за ползване",
+    "Privacy Policy — kuniVPN": "Политика за поверителност — kuniVPN",
+    "Terms of Use — kuniVPN": "Условия за ползване — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "Политика за поверителност на kuniVPN.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "Условия за ползване на kuniVPN."
   },
   "hu": {
     "Свобода для": "Szabadság",
@@ -5197,6 +5269,12 @@
     "Next renewal": "Következő megújítás",
     "Price": "Ár",
     "Not available": "Nem elérhető",
-    "Plan details": "Csomag részletei"
+    "Plan details": "Csomag részletei",
+    "Privacy Policy": "Adatvédelmi irányelvek",
+    "Terms of Use": "Felhasználási feltételek",
+    "Privacy Policy — kuniVPN": "Adatvédelmi irányelvek — kuniVPN",
+    "Terms of Use — kuniVPN": "Felhasználási feltételek — kuniVPN",
+    "Privacy Policy kuniVPN — приложения, помощь и информация о проекте.": "kuniVPN adatvédelmi irányelvek.",
+    "Terms of Use kuniVPN — приложения, помощь и информация о проекте.": "kuniVPN felhasználási feltételek."
   }
 }

@@ -28,5 +28,4 @@ require('./forms').initForms();
 require('./checkout').initCheckout();
 require('./support').initSupport();
 require('./account').initAccount();
-
-
+require('./portal-sdk-bridge').initPortalSdkBridge();

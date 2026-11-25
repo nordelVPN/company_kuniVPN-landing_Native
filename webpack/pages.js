@@ -3,5 +3,7 @@ module.exports = [
  ['login','Войти','Welcome back to'],
  ['forgot-password','Forgot password','Forgot password'],
  ['create-account','Create account','Create account'],
- ['account','Кабинет','Твоё пространство.']
+ ['account','Кабинет','Твоё пространство.'],
+ ['privacy','Privacy Policy','Privacy Policy'],
+ ['terms','Terms of Use','Terms of Use']
 ].map(([name,title,heading])=>({name,title,heading,template:'pages/'+name+'.hbs',modules:['src/modules/main.js'],styles:['src/styles/base.scss']}));
