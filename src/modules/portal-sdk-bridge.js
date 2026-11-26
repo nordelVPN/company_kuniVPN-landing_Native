@@ -5,6 +5,9 @@ var sdkFactory = require('./vpn-portal-sdk');
 function initPortalSdkBridge() {
   var sdk = sdkFactory.createVpnPortalSdk({ brandSlug: 'kuni' });
   sdkFactory.syncAccountNavLinks(sdk);
+  var siteConfigPromise = sdk.getSiteConfig();
+  var cachedPlans = [];
+  var checkoutWishlistCtrl = null;
 
   function setStatus(el, msg) {
     if (!el) return;
@@ -17,29 +20,109 @@ function initPortalSdkBridge() {
     return '€' + (Number.isInteger(euros) ? String(euros) : euros.toFixed(2));
   }
 
-  if (sdk.mode === 'live' && document.querySelector('#plans')) {
-    sdk.getPublicPlans().then(function (res) {
-      ((res && res.plans) || []).forEach(function (plan) {
-        var btn = document.querySelector('[data-open-checkout="' + plan.plan_code + '"]');
-        var card = btn && btn.closest('article');
-        var priceEl = card && card.querySelector('.price, strong');
-        if (priceEl) priceEl.textContent = formatEur(plan.price_minor);
-      });
-    }).catch(function () { /* keep static fallback */ });
+  if (document.querySelector('#plans')) {
+    document.querySelectorAll('[data-open-checkout]').forEach(function (btn) {
+      var code = btn.getAttribute('data-open-checkout');
+      var card = btn.closest('article');
+      var titleEl = card && card.querySelector('h3');
+      if (code) cachedPlans.push({ plan_code: code, name: titleEl ? titleEl.textContent.trim() : code });
+    });
 
-    sdk.getPublicServersCatalog().then(function (res) {
-      var servers = (res && (res.servers || res.locations || res.data)) || [];
-      var plansEl = document.querySelector('#plans');
-      if (plansEl && servers.length) {
-        plansEl.setAttribute('data-live-servers-count', String(servers.length));
-        sdkFactory.renderLiveServersStrip(plansEl.querySelector('.wrap') || plansEl, servers);
+    if (sdk.mode === 'live') {
+      sdk.getPublicPlans().then(function (res) {
+        var plans = (res && res.plans) || [];
+        if (plans.length) {
+          cachedPlans = plans.map(function (p) { return { plan_code: p.plan_code, name: p.name || p.plan_code }; });
+          if (checkoutWishlistCtrl) checkoutWishlistCtrl.update({ plans: cachedPlans });
+        }
+        plans.forEach(function (plan) {
+          var btn = document.querySelector('[data-open-checkout="' + plan.plan_code + '"]');
+          var card = btn && btn.closest('article');
+          var priceEl = card && card.querySelector('.price, strong');
+          if (priceEl) priceEl.textContent = formatEur(plan.price_minor);
+        });
+      }).catch(function () { /* keep static fallback */ });
+    }
+
+    siteConfigPromise.then(function (cfg) {
+      if (!sdkFactory.isSiteServersEnabled(cfg)) {
+        var strip = document.querySelector('[data-live-servers-strip]');
+        if (strip) strip.hidden = true;
+        return;
       }
-    }).catch(function () { /* optional */ });
+      if (sdk.mode !== 'live') return;
+      sdk.getPublicServersCatalog().then(function (res) {
+        var servers = (res && (res.servers || res.locations || res.data)) || [];
+        var plansEl = document.querySelector('#plans');
+        if (plansEl && servers.length) {
+          plansEl.setAttribute('data-live-servers-count', String(servers.length));
+          sdkFactory.renderLiveServersStrip(plansEl.querySelector('.wrap') || plansEl, servers);
+        }
+      }).catch(function () { /* optional */ });
+    });
   }
 
   var isAccountPage = Boolean(document.querySelector('[data-sdk-vpn-panel]'));
   if (!isAccountPage) {
     sdkFactory.initCheckoutReturnPolling(sdk);
+  }
+
+  var regFormForBanner = document.querySelector('form[data-form="register"], form[data-form="create-account"]');
+  if (regFormForBanner) {
+    siteConfigPromise.then(function (cfg) {
+      if (sdkFactory.isSiteInWishlistMode(cfg)) {
+        sdkFactory.mountRegisterWishlistBanner(regFormForBanner, cfg);
+      }
+    });
+  }
+
+  var checkoutDialogAll = document.querySelector('dialog[data-checkout], #checkout-dialog, #checkout');
+  var checkoutFormAll = checkoutDialogAll && checkoutDialogAll.querySelector('form');
+  function switchKuniCheckoutToWishlist(cfg, planCode) {
+    if (!checkoutDialogAll) return;
+    if (checkoutFormAll) checkoutFormAll.hidden = true;
+    checkoutDialogAll.querySelectorAll('[data-payment-providers]').forEach(function (el) { el.hidden = true; });
+    var host = checkoutDialogAll.querySelector('[data-wishlist-checkout-host]');
+    if (!host) {
+      host = document.createElement('div');
+      host.setAttribute('data-wishlist-checkout-host', '');
+      host.style.marginTop = '1rem';
+      var parent = (checkoutFormAll && checkoutFormAll.parentNode) || checkoutDialogAll;
+      if (checkoutFormAll && checkoutFormAll.nextSibling) {
+        parent.insertBefore(host, checkoutFormAll.nextSibling);
+      } else {
+        parent.appendChild(host);
+      }
+    }
+    var planSelect = checkoutDialogAll.querySelector('#checkout-plan, [data-plan]');
+    var initialPlan = planCode || (planSelect ? planSelect.value : '');
+    checkoutWishlistCtrl = sdkFactory.renderWishlistCard(sdk, host, {
+      siteConfig: cfg,
+      planCode: initialPlan,
+      plans: cachedPlans,
+      sourcePage: 'checkout',
+      variant: 'checkout'
+    });
+  }
+
+  if (checkoutDialogAll) {
+    document.addEventListener('click', function (e) {
+      var openBtn = e.target && e.target.closest && e.target.closest('[data-open-checkout]');
+      if (openBtn && checkoutWishlistCtrl) {
+        checkoutWishlistCtrl.setPlanCode(openBtn.getAttribute('data-open-checkout') || '');
+      }
+    });
+    var planSelectAll = checkoutDialogAll.querySelector('#checkout-plan, [data-plan]');
+    if (planSelectAll) {
+      planSelectAll.addEventListener('change', function () {
+        if (checkoutWishlistCtrl) checkoutWishlistCtrl.setPlanCode(planSelectAll.value || '');
+      });
+    }
+    siteConfigPromise.then(function (cfg) {
+      if (!sdkFactory.isSiteCheckoutEnabled(cfg)) {
+        switchKuniCheckoutToWishlist(cfg, '');
+      }
+    });
   }
 
   if (sdk.mode === 'live') {
@@ -170,8 +253,14 @@ function initPortalSdkBridge() {
           checkoutForm.appendChild(kProviderHost);
         }
       }
-      sdkFactory.mountPaymentProviderSelector(sdk, kProviderHost).then(function (getter) {
-        if (typeof getter === 'function') getKProvider = getter;
+      siteConfigPromise.then(function (cfg) {
+        if (!sdkFactory.isSiteCheckoutEnabled(cfg)) {
+          kProviderHost.hidden = true;
+          return;
+        }
+        sdkFactory.mountPaymentProviderSelector(sdk, kProviderHost).then(function (getter) {
+          if (typeof getter === 'function') getKProvider = getter;
+        });
       });
 
       checkoutForm.addEventListener('submit', function (e) {
@@ -198,6 +287,12 @@ function initPortalSdkBridge() {
           }
           sdkFactory.handleCheckoutResponse(sdk, res);
         }).catch(function (err) {
+          if (err && (err.code === 'SITE_IN_WISHLIST_MODE' || err.status === 403)) {
+            sdk.getSiteConfig({ force: true }).then(function (cfg) {
+              switchKuniCheckoutToWishlist(cfg, planInput ? planInput.value : '');
+            });
+            return;
+          }
           setStatus(msgEl, (err && err.message) || 'Checkout failed.');
         });
       }, true);
@@ -300,11 +395,13 @@ function initPortalSdkBridge() {
       : Promise.resolve();
 
     return ready.then(function () {
-      return Promise.all([sdk.getMe(), sdk.getSubscription(), sdk.getBillingHistory()]);
+      return Promise.all([sdk.getMe(), sdk.getSubscription(), sdk.getBillingHistory(), siteConfigPromise]);
     }).then(function (all) {
       var me = all[0];
       var subRes = all[1];
       var billRes = all[2];
+      var siteCfg = all[3];
+      var serversAllowed = sdkFactory.isSiteServersEnabled(siteCfg);
       sdkFactory.revealAuthGate();
       if (me && me.client) {
         vpnPanel.setAttribute('data-client-email', me.client.email || '');
@@ -331,6 +428,20 @@ function initPortalSdkBridge() {
         if (subDds[0]) subDds[0].textContent = sub.plan_name || sub.plan_code;
         if (subDds[1] && sub.expires_at) subDds[1].textContent = new Date(sub.expires_at).toLocaleDateString();
         if (subDds[2] && typeof sub.price_minor === 'number') subDds[2].textContent = formatEur(sub.price_minor);
+      }
+      if (!serversAllowed) {
+        [
+          keyEl && keyEl.parentElement,
+          serversBody && serversBody.closest('div'),
+          devicesCount && devicesCount.closest('h3, h2'),
+          devicesBody && devicesBody.closest('div')
+        ].forEach(function (el) {
+          if (el && el !== vpnPanel) el.hidden = true;
+        });
+        var vpnHeading = vpnPanel.querySelector('h2, h3');
+        if (vpnHeading && /VPN Key|Available Servers/i.test(vpnHeading.textContent || '')) vpnHeading.hidden = true;
+        sdkFactory.mountAccountWaitlistCard(vpnPanel, siteCfg, { prepend: true, className: 'card' });
+        return;
       }
       accessKey = (sub && sub.access_key) || '';
       if (keyEl) keyEl.textContent = revealed ? accessKey : maskKey(accessKey);
