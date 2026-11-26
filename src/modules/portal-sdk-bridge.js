@@ -4,6 +4,7 @@ var sdkFactory = require('./vpn-portal-sdk');
 
 function initPortalSdkBridge() {
   var sdk = sdkFactory.createVpnPortalSdk({ brandSlug: 'kuni' });
+  sdkFactory.syncAccountNavLinks(sdk);
 
   function setStatus(el, msg) {
     if (!el) return;
@@ -47,6 +48,7 @@ function initPortalSdkBridge() {
     if (loginForm) {
       loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         var emailInput = loginForm.querySelector('input[type="email"]');
         var passInput = loginForm.querySelector('input[type="password"]');
         var msgEl = loginForm.querySelector('[role="status"], .status');
@@ -66,15 +68,32 @@ function initPortalSdkBridge() {
     if (regForm) {
       regForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         var emailInput = regForm.querySelector('input[type="email"]');
+        var nameInput = regForm.querySelector('input[name="display_name"]');
         var passInputs = regForm.querySelectorAll('input[type="password"]');
-        var msgEl = regForm.querySelector('[role="status"], .status');
+        var msgEl = regForm.querySelector('[data-form-message], [role="status"], .status');
+        var email = emailInput ? emailInput.value.trim() : '';
         var pass = passInputs[0] ? passInputs[0].value : '';
         var confirm = passInputs[1] ? passInputs[1].value : pass;
+        if (!email || email.indexOf('@') < 1) {
+          setStatus(msgEl, 'Please enter a valid email address.');
+          return;
+        }
+        if (pass.length < 8) {
+          setStatus(msgEl, 'Password must be at least 8 characters.');
+          return;
+        }
+        if (pass !== confirm) {
+          setStatus(msgEl, 'Passwords do not match.');
+          return;
+        }
+        var displayName = (nameInput && nameInput.value.trim()) || email.split('@')[0];
         sdk.register({
-          email: emailInput ? emailInput.value.trim() : '',
+          email: email,
           password: pass,
-          password_confirmation: confirm
+          password_confirmation: confirm,
+          display_name: displayName
         }).then(function () {
           setStatus(msgEl, 'Account created. Redirecting...');
           window.location.href = './account.html';
@@ -84,31 +103,53 @@ function initPortalSdkBridge() {
       }, true);
     }
 
-    var forgotForm = document.querySelector('form[data-form="forgot"], form[data-form="forgot-password"]');
-    if (forgotForm) {
-      var params = new URLSearchParams(window.location.search || '');
-      var token = params.get('token');
+    var params = new URLSearchParams(window.location.search || '');
+    var token = params.get('token');
+    var recoveryWrap = document.querySelector('[data-recovery]');
+    var resetWrap = document.querySelector('[data-reset]');
+    var forgotForm = document.querySelector('form[data-form="recovery"], form[data-form="forgot"], form[data-form="forgot-password"]');
+    var resetForm = document.querySelector('form[data-form="reset"]');
+    if (token && resetForm) {
+      if (recoveryWrap) recoveryWrap.hidden = true;
+      if (resetWrap) resetWrap.hidden = false;
+      resetForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var msgEl = resetForm.querySelector('[data-form-message], [role="status"], .status');
+        var passInputs = resetForm.querySelectorAll('input[type="password"]');
+        var p1 = passInputs[0] ? passInputs[0].value : '';
+        var p2 = passInputs[1] ? passInputs[1].value : p1;
+        if (p1.length < 8) {
+          setStatus(msgEl, 'Password must be at least 8 characters.');
+          return;
+        }
+        if (p1 !== p2) {
+          setStatus(msgEl, 'Passwords do not match.');
+          return;
+        }
+        sdk.resetPassword({ token: token, password: p1, password_confirmation: p2 }).then(function () {
+          setStatus(msgEl, 'Password reset. Redirecting...');
+          window.location.href = './login.html';
+        }).catch(function (err) {
+          setStatus(msgEl, (err && err.message) || 'Reset failed.');
+        });
+      }, true);
+    } else if (forgotForm) {
       forgotForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        var msgEl = forgotForm.querySelector('[role="status"], .status');
-        if (token) {
-          var passInputs = forgotForm.querySelectorAll('input[type="password"]');
-          var p1 = passInputs[0] ? passInputs[0].value : '';
-          var p2 = passInputs[1] ? passInputs[1].value : p1;
-          sdk.resetPassword({ token: token, password: p1, password_confirmation: p2 }).then(function () {
-            setStatus(msgEl, 'Password reset. Redirecting...');
-            window.location.href = './login.html';
-          }).catch(function (err) {
-            setStatus(msgEl, (err && err.message) || 'Reset failed.');
-          });
-        } else {
-          var emailInput = forgotForm.querySelector('input[type="email"]');
-          sdk.forgotPassword(emailInput ? emailInput.value.trim() : '').then(function (res) {
-            setStatus(msgEl, (res && res.message) || 'If an account exists, reset instructions have been sent.');
-          }).catch(function (err) {
-            setStatus(msgEl, (err && err.message) || 'Request failed.');
-          });
+        e.stopImmediatePropagation();
+        var msgEl = forgotForm.querySelector('[data-form-message], [role="status"], .status');
+        var emailInput = forgotForm.querySelector('input[type="email"]');
+        var email = emailInput ? emailInput.value.trim() : '';
+        if (!email || email.indexOf('@') < 1) {
+          setStatus(msgEl, 'Please enter a valid email address.');
+          return;
         }
+        sdk.forgotPassword(email).then(function (res) {
+          setStatus(msgEl, (res && res.message) || 'If an account exists, reset instructions have been sent.');
+        }).catch(function (err) {
+          setStatus(msgEl, (err && err.message) || 'Request failed.');
+        });
       }, true);
     }
 
@@ -168,7 +209,7 @@ function initPortalSdkBridge() {
 
   if (sdk.mode === 'live') {
     if (!sdk.isAuthenticated()) {
-      window.location.href = './login.html';
+      window.location.replace('./login.html');
       return;
     }
     document.querySelectorAll('.prototype-note, .prototype-banner, [data-demo-banner], [data-demo-select], [data-preview-session]').forEach(function (el) {
@@ -264,6 +305,7 @@ function initPortalSdkBridge() {
       var me = all[0];
       var subRes = all[1];
       var billRes = all[2];
+      sdkFactory.revealAuthGate();
       if (me && me.client) {
         vpnPanel.setAttribute('data-client-email', me.client.email || '');
         var profileCard = document.querySelector('.profile-card');
@@ -314,6 +356,11 @@ function initPortalSdkBridge() {
       });
       sdk.getDevices(accessKey).then(renderDevices).catch(function () { /* ignore */ });
     }).catch(function (err) {
+      if (sdk.mode === 'live' && (!sdk.isAuthenticated() || (err && (err.status === 401 || err.code === 'UNAUTHORIZED')))) {
+        window.location.replace('./login.html');
+        return;
+      }
+      sdkFactory.revealAuthGate();
       setStatus(statusNote, (err && err.message) || 'Unable to load VPN access data.');
     });
   }

@@ -59,16 +59,16 @@ for(const prefix of ['', '/preview']){
  });
 }
 test('responsive matrix and section screenshots',async({page,browserName})=>{
- fs.mkdirSync('docs/qa/screenshots',{recursive:true});
+ fs.mkdirSync('test-results/screenshots',{recursive:true});
  for(const width of [320,375,390,768,1024,1440]){
   await page.setViewportSize({width,height:1000});await page.goto('/index.html');await page.locator('#language').selectOption('ru');
   await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
   if(width<=390)for(const selector of ['.plans','.platform-grid','.topic-grid'])expect(await page.locator(selector).evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length)).toBe(1);
-  if(browserName==='chromium')await page.locator('.header').screenshot({path:'docs/qa/screenshots/'+browserName+'-'+width+'-header.png'});
-  if(browserName==='chromium'||width===390||width===1440)for(const id of ['home','features','apps','security','support','plans'])await page.locator('#'+id).screenshot({style:'.header,.skip{visibility:hidden!important}',path:'docs/qa/screenshots/'+browserName+'-'+width+'-'+id+'.png'});
-  await page.locator('[data-open-checkout=trial]').click();await expect(page.locator('#checkout')).toBeVisible();if(width===390||width===1440)await page.locator('#checkout').screenshot({path:'docs/qa/screenshots/'+browserName+'-'+width+'-checkout.png'});await expect.poll(()=>page.locator('#checkout').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);if(width===390){await page.setViewportSize({width,height:420});await page.locator('#checkout-email').scrollIntoViewIfNeeded();await expect(page.locator('#checkout-email')).toBeInViewport();await page.locator('#checkout [type=submit]').scrollIntoViewIfNeeded();await expect(page.locator('#checkout [type=submit]')).toBeInViewport();await page.setViewportSize({width,height:1000});}
+  if(browserName==='chromium')await page.locator('.header').screenshot({path:'test-results/screenshots/'+browserName+'-'+width+'-header.png'});
+  if(browserName==='chromium'||width===390||width===1440)for(const id of ['home','features','apps','security','support','plans'])await page.locator('#'+id).screenshot({style:'.header,.skip{visibility:hidden!important}',path:'test-results/screenshots/'+browserName+'-'+width+'-'+id+'.png'});
+  await page.locator('[data-open-checkout=trial]').click();await expect(page.locator('#checkout')).toBeVisible();if(width===390||width===1440)await page.locator('#checkout').screenshot({path:'test-results/screenshots/'+browserName+'-'+width+'-checkout.png'});await expect.poll(()=>page.locator('#checkout').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);if(width===390){await page.setViewportSize({width,height:420});await page.locator('#checkout-email').scrollIntoViewIfNeeded();await expect(page.locator('#checkout-email')).toBeInViewport();await page.locator('#checkout [type=submit]').scrollIntoViewIfNeeded();await expect(page.locator('#checkout [type=submit]')).toBeInViewport();await page.setViewportSize({width,height:1000});}
   await page.keyboard.press('Escape');await expect(page.locator('#checkout')).not.toBeVisible();
-  for(const file of ['login','forgot-password','create-account','account']){await page.goto('/'+file+'.html');if(width===390||width===1440)await page.locator('main').screenshot({style:'.header,.skip{visibility:hidden!important}',path:'docs/qa/screenshots/'+browserName+'-'+width+'-'+file+'.png'});await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);}
+  for(const file of ['login','forgot-password','create-account','account']){await page.goto('/'+file+'.html');if(width===390||width===1440)await page.locator('main').screenshot({style:'.header,.skip{visibility:hidden!important}',path:'test-results/screenshots/'+browserName+'-'+width+'-'+file+'.png'});await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);}
  }
  await page.setViewportSize({width:1440,height:1000});await page.goto('/index.html');await page.evaluate(()=>{document.documentElement.style.zoom='2';});await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
 });
