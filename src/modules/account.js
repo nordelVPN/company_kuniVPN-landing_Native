@@ -8,7 +8,7 @@ function initAccount(){
  document.querySelector('[data-edit-profile]')?.addEventListener('click',event=>{const form=document.querySelector('#profile-edit');form.hidden=!form.hidden;event.currentTarget.setAttribute('aria-expanded',String(!form.hidden));if(!form.hidden)form.querySelector('input').focus();});
  for(const button of document.querySelectorAll('[data-account-action]'))button.addEventListener('click',()=>message(document.querySelector('[data-account-message]'),'Service unavailable: API is not connected. No data was sent.'));
  for(const button of document.querySelectorAll('[data-demo-retry]'))button.addEventListener('click',()=>{const select=document.querySelector('[data-demo-select="'+button.dataset.demoRetry+'"]');select.value='empty';select.dispatchEvent(new Event('change'));});
- document.querySelector('[data-preview-session]')?.addEventListener('click',()=>message(document.querySelector('[data-session-message]'),'Demo: session expired. Sign in again.'));
- document.querySelector('[data-signout]')?.addEventListener('click',()=>{if(window.confirm(require('./i18n').t('Leave the local prototype? No real session exists.')))location.href='./index.html#login';});
+ document.querySelector('[data-preview-session]')?.addEventListener('click',()=>message(document.querySelector('[data-session-message]'),'Session expired. Please sign in again.'));
+ document.querySelector('[data-signout]')?.addEventListener('click',()=>{if(window.confirm(require('./i18n').t('Sign out of your kuniVPN account?')))location.href='./index.html#login';});
 }
 module.exports={initAccount};

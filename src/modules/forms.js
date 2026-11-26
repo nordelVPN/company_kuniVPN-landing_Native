@@ -19,7 +19,7 @@ function initForms(){
   const validate=input=>{
    let key='';
    if(input.dataset.confirm&&input.value!==document.getElementById(input.dataset.confirm).value)key='Passwords do not match.';
-   else if(!input.validity.valid)key=input.type==='email'?'Enter a valid email address.':input.type==='password'?'Use at least 8 characters for this demo.':'Complete this field.';
+   else if(!input.validity.valid)key=input.type==='email'?'Enter a valid email address.':input.type==='password'?'Password must be at least 8 characters.':'Complete this field.';
    input.setAttribute('aria-invalid',String(Boolean(key)));
    message(document.getElementById(input.id+'-error'),key);return !key;
   };
@@ -40,10 +40,10 @@ function initForms(){
  if(token!==null&&document.querySelector('[data-reset]')){
   document.querySelector('[data-recovery]').hidden=true;document.querySelector('[data-reset]').hidden=false;
   const form=document.querySelector('[data-form="reset"]');form.dataset.tokenValid=String(token==='demo');
-  message(document.querySelector('[data-token-state]'),token==='demo'?'Demo token. No password will be changed.':token==='expired'?'Demo: token expired. Request a new link.':'This token cannot be verified. Request a new link.');
+  message(document.querySelector('[data-token-state]'),token==='demo'?'Enter a new password for your account.':token==='expired'?'Reset link expired. Request a new link.':'This token cannot be verified. Request a new link.');
   for(const input of form.querySelectorAll('input'))input.disabled=token!=='demo';
   form.querySelector('[type="submit"]').disabled=token!=='demo';
  }
- for(const button of document.querySelectorAll('[data-preview-recovery]'))button.addEventListener('click',()=>message(document.querySelector('[data-recovery-preview]'),button.dataset.previewRecovery==='confirmation'?'Demo confirmation. No email was sent.':'Demo retry. Submit the form to preview service unavailability.'));
+ for(const button of document.querySelectorAll('[data-preview-recovery]'))button.addEventListener('click',()=>message(document.querySelector('[data-recovery-preview]'),button.dataset.previewRecovery==='confirmation'?'If an account exists, reset instructions have been sent.':'Service is temporarily unavailable. Please try again.'));
 }
 module.exports={initForms,message,resetForm,cancelForm};

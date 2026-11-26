@@ -29,3 +29,4 @@ require('./checkout').initCheckout();
 require('./support').initSupport();
 require('./account').initAccount();
 require('./portal-sdk-bridge').initPortalSdkBridge();
+require('./support-widget').initSupportWidget({brandSlug:'kuni'});
