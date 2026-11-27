@@ -1,13 +1,80 @@
 'use strict';
 
 var sdkFactory = require('./vpn-portal-sdk');
+var QRCore = require('qrcode/lib/core/qrcode');
+function createQrMatrix(text) {
+  return QRCore.create(text, { errorCorrectionLevel: 'M' }).modules;
+}
 
 function initPortalSdkBridge() {
   var sdk = sdkFactory.createVpnPortalSdk({ brandSlug: 'kuni' });
   sdkFactory.syncAccountNavLinks(sdk);
   var siteConfigPromise = sdk.getSiteConfig();
-  var cachedPlans = [];
-  var checkoutWishlistCtrl = null;
+  var KUNI_DEFAULT_PLANS = [
+    { plan_code: 'trial', name: 'Trial (1 month)', price_minor: 100 },
+    { plan_code: 'monthly', name: '1 Month', price_minor: 700 },
+    { plan_code: 'quarterly', name: '3 Months', price_minor: 1500 },
+    { plan_code: 'yearly', name: '12 Months', price_minor: 5500 }
+  ];
+  var cachedPlans = KUNI_DEFAULT_PLANS.slice();
+  var currentSiteConfig = null;
+  var cachedClientEmail = '';
+  function syncKuniWishlistBotUrls(cfg) {
+    if (!cfg || !sdkFactory.isSiteInWishlistMode(cfg)) return;
+    var lang = sdkFactory.getCurrentSiteLanguage();
+    document.querySelectorAll('[data-open-checkout]').forEach(function (el) {
+      var planCode = el.getAttribute('data-open-checkout') || '';
+      el.setAttribute('data-wishlist-bot-url', sdkFactory.buildWishlistBotUrl(cfg, { planCode: planCode, language: lang }));
+    });
+  }
+  siteConfigPromise.then(function (cfg) {
+    currentSiteConfig = cfg;
+    var isWishlist = sdkFactory.isSiteInWishlistMode(cfg);
+    document.documentElement.dataset.launchMode = isWishlist ? 'wishlist_only' : 'live';
+    if (isWishlist) {
+      var openDlg = document.querySelector('dialog[data-checkout], #checkout-dialog, #checkout');
+      if (openDlg && openDlg.open) openDlg.close();
+      syncKuniWishlistBotUrls(cfg);
+    }
+  });
+  document.addEventListener('languagechange', function () {
+    if (currentSiteConfig) syncKuniWishlistBotUrls(currentSiteConfig);
+  });
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest && e.target.closest('[data-open-checkout]');
+    if (!btn) return;
+    var planCode = btn.getAttribute('data-open-checkout') || '';
+    if (currentSiteConfig) {
+      if (!sdkFactory.isSiteInWishlistMode(currentSiteConfig)) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      sdkFactory.openWishlistBot(currentSiteConfig, {
+        planCode: planCode,
+        language: sdkFactory.getCurrentSiteLanguage()
+      });
+      return;
+    }
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    siteConfigPromise.then(function (cfg) {
+      if (sdkFactory.isSiteInWishlistMode(cfg)) {
+        sdkFactory.openWishlistBot(cfg, {
+          planCode: planCode,
+          language: sdkFactory.getCurrentSiteLanguage()
+        });
+      } else {
+        btn.click();
+      }
+    });
+  }, true);
+
+  function findKuniPlan(code) {
+    var clean = String(code || '').trim();
+    return cachedPlans.find(function (p) { return p.plan_code === clean; }) ||
+      KUNI_DEFAULT_PLANS.find(function (p) { return p.plan_code === clean; }) ||
+      KUNI_DEFAULT_PLANS[2];
+  }
 
   function uiMsg() {
     return sdkFactory.getPortalUiMessages();
@@ -40,7 +107,6 @@ function initPortalSdkBridge() {
         var plans = (res && res.plans) || [];
         if (plans.length) {
           cachedPlans = plans.map(function (p) { return { plan_code: p.plan_code, name: p.name || p.plan_code }; });
-          if (checkoutWishlistCtrl) checkoutWishlistCtrl.update({ plans: cachedPlans });
         }
         plans.forEach(function (plan) {
           var btn = document.querySelector('[data-open-checkout="' + plan.plan_code + '"]');
@@ -74,63 +140,7 @@ function initPortalSdkBridge() {
     sdkFactory.initCheckoutReturnPolling(sdk);
   }
 
-  var regFormForBanner = document.querySelector('form[data-form="register"], form[data-form="create-account"]');
-  if (regFormForBanner) {
-    siteConfigPromise.then(function (cfg) {
-      if (sdkFactory.isSiteInWishlistMode(cfg)) {
-        sdkFactory.mountRegisterWishlistBanner(regFormForBanner, cfg);
-      }
-    });
-  }
-
-  var checkoutDialogAll = document.querySelector('dialog[data-checkout], #checkout-dialog, #checkout');
-  var checkoutFormAll = checkoutDialogAll && checkoutDialogAll.querySelector('form');
-  function switchKuniCheckoutToWishlist(cfg, planCode) {
-    if (!checkoutDialogAll) return;
-    if (checkoutFormAll) checkoutFormAll.hidden = true;
-    checkoutDialogAll.querySelectorAll('[data-payment-providers]').forEach(function (el) { el.hidden = true; });
-    var host = checkoutDialogAll.querySelector('[data-wishlist-checkout-host]');
-    if (!host) {
-      host = document.createElement('div');
-      host.setAttribute('data-wishlist-checkout-host', '');
-      host.style.marginTop = '1rem';
-      var parent = (checkoutFormAll && checkoutFormAll.parentNode) || checkoutDialogAll;
-      if (checkoutFormAll && checkoutFormAll.nextSibling) {
-        parent.insertBefore(host, checkoutFormAll.nextSibling);
-      } else {
-        parent.appendChild(host);
-      }
-    }
-    var planSelect = checkoutDialogAll.querySelector('#checkout-plan, [data-plan]');
-    var initialPlan = planCode || (planSelect ? planSelect.value : '');
-    checkoutWishlistCtrl = sdkFactory.renderWishlistCard(sdk, host, {
-      siteConfig: cfg,
-      planCode: initialPlan,
-      plans: cachedPlans,
-      sourcePage: 'checkout',
-      variant: 'checkout'
-    });
-  }
-
-  if (checkoutDialogAll) {
-    document.addEventListener('click', function (e) {
-      var openBtn = e.target && e.target.closest && e.target.closest('[data-open-checkout]');
-      if (openBtn && checkoutWishlistCtrl) {
-        checkoutWishlistCtrl.setPlanCode(openBtn.getAttribute('data-open-checkout') || '');
-      }
-    });
-    var planSelectAll = checkoutDialogAll.querySelector('#checkout-plan, [data-plan]');
-    if (planSelectAll) {
-      planSelectAll.addEventListener('change', function () {
-        if (checkoutWishlistCtrl) checkoutWishlistCtrl.setPlanCode(planSelectAll.value || '');
-      });
-    }
-    siteConfigPromise.then(function (cfg) {
-      if (!sdkFactory.isSiteCheckoutEnabled(cfg)) {
-        switchKuniCheckoutToWishlist(cfg, '');
-      }
-    });
-  }
+  // TASK-027: Pre-launch / Join Wishlist banner intentionally omitted on create-account.html.
 
   if (sdk.mode === 'live') {
     document.querySelectorAll('.prototype-note').forEach(function (el) { el.hidden = true; });
@@ -180,6 +190,16 @@ function initPortalSdkBridge() {
     var regForm = document.querySelector('form[data-form="register"], form[data-form="create-account"]');
     if (regForm) {
       sdkFactory.bindFormValidationClear(regForm);
+      var regParams = new URLSearchParams(window.location.search || '');
+      var handoff = sdk.consumePlanSelectionHandoff() || {};
+      var selectedPlanCode = String(regParams.get('plan') || handoff.planCode || '').trim();
+      var preEmailInput = regForm.querySelector('input[type="email"]');
+      if (handoff.email && preEmailInput && !preEmailInput.value) {
+        preEmailInput.value = handoff.email;
+      }
+      if (selectedPlanCode) {
+        sdkFactory.mountSelectedPlanBanner(regForm, findKuniPlan(selectedPlanCode));
+      }
       var rMsgEl = regForm.querySelector('[data-portal-status], [data-form-message], [role="status"], .status');
       var rBtn = regForm.querySelector('button[type="submit"]');
       regForm.addEventListener('submit', function (e) {
@@ -213,10 +233,13 @@ function initPortalSdkBridge() {
             email: email,
             password: pass,
             password_confirmation: confirm,
-            display_name: displayName
+            display_name: displayName,
+            plan_code: selectedPlanCode || undefined
           }).then(function () {
             setStatus(rMsgEl, 'Account created. Redirecting...', 'success');
-            window.location.href = './account.html';
+            window.location.href = selectedPlanCode
+              ? ('./account.html?plan=' + encodeURIComponent(selectedPlanCode))
+              : './account.html';
           }).catch(function (err) {
             if (err && err.details) {
               var mapped = {};
@@ -299,67 +322,122 @@ function initPortalSdkBridge() {
       }, true);
     }
 
-    var checkoutDialog = document.querySelector('dialog[data-checkout], #checkout-dialog, #checkout');
-    var checkoutForm = checkoutDialog && checkoutDialog.querySelector('form');
-    if (checkoutForm) {
-      var getKProvider = function () { return null; };
-      var kProviderHost = checkoutForm.querySelector('[data-payment-providers]');
-      if (!kProviderHost) {
-        kProviderHost = document.createElement('div');
-        kProviderHost.className = 'payment-providers';
-        kProviderHost.setAttribute('data-payment-providers', '');
-        kProviderHost.hidden = true;
-        var kSubmit = checkoutForm.querySelector('button[type="submit"]');
-        if (kSubmit && kSubmit.parentNode) {
-          kSubmit.parentNode.insertBefore(kProviderHost, kSubmit);
-        } else {
-          checkoutForm.appendChild(kProviderHost);
+  }
+
+  var checkoutDialog = document.querySelector('dialog[data-checkout], #checkout-dialog, #checkout');
+  var checkoutForm = checkoutDialog && checkoutDialog.querySelector('form');
+  if (checkoutDialog && checkoutForm) {
+    sdkFactory.bindFormValidationClear(checkoutForm);
+    var syncKuniDialogLabels = function () {
+      var ui = sdkFactory.getWishlistUiText();
+      var regBtn = checkoutForm.querySelector('[data-plan-action="register"]');
+      var wishBtn = checkoutForm.querySelector('[data-plan-action="wishlist"]');
+      var tgBtn = checkoutForm.querySelector('[data-plan-dialog-tg]');
+      if (regBtn) regBtn.textContent = ui.registerBtn;
+      if (wishBtn) wishBtn.textContent = ui.wishlistBtn;
+      if (tgBtn) tgBtn.textContent = ui.telegramBtn;
+    };
+    syncKuniDialogLabels();
+    document.addEventListener('languagechange', syncKuniDialogLabels);
+
+    document.addEventListener('click', function (e) {
+      if (e.target && e.target.closest && e.target.closest('[data-open-checkout]')) {
+        syncKuniDialogLabels();
+        sdkFactory.clearFieldErrors(checkoutForm);
+        var msgEl = checkoutForm.querySelector('[data-form-message], [data-portal-status]');
+        if (msgEl) sdkFactory.clearPortalStatus(msgEl);
+        var tgLink = checkoutForm.querySelector('[data-plan-dialog-tg]');
+        if (tgLink) tgLink.hidden = true;
+        var emailInput = checkoutForm.querySelector('input[type="email"]');
+        if (emailInput && !emailInput.value && sdk.isAuthenticated()) {
+          if (cachedClientEmail) {
+            emailInput.value = cachedClientEmail;
+          } else {
+            sdk.getMe().then(function (me) {
+              if (me && me.client && me.client.email && !emailInput.value) {
+                cachedClientEmail = me.client.email;
+                emailInput.value = cachedClientEmail;
+              }
+            }).catch(function () {});
+          }
         }
       }
-      siteConfigPromise.then(function (cfg) {
-        if (!sdkFactory.isSiteCheckoutEnabled(cfg)) {
-          kProviderHost.hidden = true;
-          return;
-        }
-        sdkFactory.mountPaymentProviderSelector(sdk, kProviderHost).then(function (getter) {
-          if (typeof getter === 'function') getKProvider = getter;
-        });
-      });
+    });
 
-      checkoutForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!sdk.isAuthenticated()) {
-          window.location.href = './login.html';
-          return;
-        }
-        var planInput = checkoutDialog.querySelector('#checkout-plan, [data-plan], [name="plan"]:checked, [name="plan_code"], [name="plan"]');
-        var promoInput = checkoutForm.querySelector('[name="promo"], [name="promo_code"]');
-        var msgEl = checkoutForm.querySelector('[role="status"], .status, [data-checkout-message]');
-        var returnUrl = new URL('./account.html', window.location.href).href;
-        var cancelUrl = new URL('./index.html?status=cancelled', window.location.href).href;
-        sdk.checkout({
-          plan_code: planInput ? planInput.value : 'quarterly',
-          provider: getKProvider(),
-          promo_code: promoInput ? promoInput.value.trim() : null,
-          return_url: returnUrl,
-          cancel_url: cancelUrl
+    var submitKuniPlanDialog = function (intent, triggerBtn) {
+      sdkFactory.clearFieldErrors(checkoutForm);
+      var ui = sdkFactory.getWishlistUiText();
+      var emailInput = checkoutForm.querySelector('input[type="email"]');
+      var emailKey = (emailInput && emailInput.name) || 'checkout-email';
+      var emailVal = emailInput ? emailInput.value.trim() : '';
+      var msgEl = checkoutForm.querySelector('[data-form-message], [data-portal-status]');
+      var tgLink = checkoutForm.querySelector('[data-plan-dialog-tg]');
+
+      if (!isValidEmail(emailVal)) {
+        var errMsg = ui.emailInvalid || uiMsg().invalidEmail;
+        sdkFactory.setFieldErrors(checkoutForm, { [emailKey]: errMsg });
+        setStatus(msgEl, errMsg, 'error', { scroll: false });
+        return;
+      }
+
+      var planInput = checkoutDialog.querySelector('#checkout-plan, [data-plan]');
+      var plan = findKuniPlan(planInput ? planInput.value : 'quarterly');
+      var source = intent === 'register' ? 'plan_dialog_register' : 'plan_dialog_wishlist';
+      var meta = {
+        intent: intent,
+        source_page: 'index',
+        plan_name: plan.name,
+        price_minor: plan.price_minor,
+        currency: 'EUR'
+      };
+
+      if (intent === 'register') {
+        sdkFactory.withFormBusy(checkoutForm, triggerBtn, function () {
+          var timeout = new Promise(function (resolve) { window.setTimeout(resolve, 1500); });
+          return Promise.race([
+            sdk.joinWishlist({ email: emailVal, planCode: plan.plan_code, source: source, meta: meta }).catch(function () { return null; }),
+            timeout
+          ]).then(function () {
+            if (sdk.isAuthenticated()) {
+              window.location.href = './account.html?plan=' + encodeURIComponent(plan.plan_code);
+              return;
+            }
+            sdk.savePlanSelectionHandoff({ email: emailVal, planCode: plan.plan_code });
+            window.location.href = './create-account.html?plan=' + encodeURIComponent(plan.plan_code);
+          });
+        }, { loadingText: ui.submitting });
+        return;
+      }
+
+      setStatus(msgEl, ui.submitting, 'loading', { scroll: false });
+      sdkFactory.withFormBusy(checkoutForm, triggerBtn, function () {
+        return sdk.joinWishlist({
+          email: emailVal,
+          planCode: plan.plan_code,
+          source: source,
+          meta: meta
         }).then(function (res) {
-          setStatus(msgEl, res && res.checkout && res.checkout.mode === 'mock' ? 'Confirm test payment to activate your VPN key.' : 'Redirecting to payment provider...');
-          if (checkoutDialog && checkoutDialog.open && res && res.checkout && res.checkout.mode === 'mock') {
-            checkoutDialog.close();
+          var msg = (res && res.already_registered) ? (ui.planUpdated || ui.successExisting) : ui.successNew;
+          setStatus(msgEl, msg, (res && res.already_registered) ? 'info' : 'success', { scroll: false });
+          if (tgLink && currentSiteConfig && currentSiteConfig.wishlist_bot_url) {
+            tgLink.href = currentSiteConfig.wishlist_bot_url;
+            tgLink.hidden = false;
           }
-          sdkFactory.handleCheckoutResponse(sdk, res);
         }).catch(function (err) {
-          if (err && (err.code === 'SITE_IN_WISHLIST_MODE' || err.status === 403)) {
-            sdk.getSiteConfig({ force: true }).then(function (cfg) {
-              switchKuniCheckoutToWishlist(cfg, planInput ? planInput.value : '');
-            });
-            return;
-          }
-          setStatus(msgEl, (err && err.message) || 'Checkout failed.');
+          setStatus(msgEl, sdkFactory.formatPortalApiError(err, ui.errorGeneric), 'error', { scroll: false });
         });
-      }, true);
-    }
+      }, { loadingText: ui.submitting });
+    };
+
+    var regAction = checkoutForm.querySelector('[data-plan-action="register"]');
+    var wishAction = checkoutForm.querySelector('[data-plan-action="wishlist"]');
+    if (regAction) regAction.addEventListener('click', function () { submitKuniPlanDialog('register', regAction); });
+    if (wishAction) wishAction.addEventListener('click', function () { submitKuniPlanDialog('wishlist', wishAction); });
+    checkoutForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      submitKuniPlanDialog('register', regAction || wishAction);
+    }, true);
   }
 
   var vpnPanel = document.querySelector('[data-sdk-vpn-panel]');
@@ -384,12 +462,12 @@ function initPortalSdkBridge() {
 
   var keyEl = vpnPanel.querySelector('[data-sdk-vpn-key]');
   var serversBody = vpnPanel.querySelector('[data-sdk-servers]');
-  var devicesBody = vpnPanel.querySelector('[data-sdk-devices]');
-  var devicesCount = vpnPanel.querySelector('[data-sdk-devices-count]');
+  var devicesBody = document.querySelector('[data-sdk-devices]');
+  var devicesCount = document.querySelector('[data-sdk-devices-count]');
   var billingBody = document.querySelector('[data-sdk-billing]');
   var topStatusNote = document.querySelector('.account-content > [data-portal-status]');
-    var statusNote = vpnPanel.querySelector('[data-sdk-status]') || topStatusNote;
-    var devicesStatusNote = vpnPanel.querySelector('[data-devices-status]') || statusNote;
+  var statusNote = vpnPanel.querySelector('[data-sdk-status]') || topStatusNote;
+  var devicesStatusNote = document.querySelector('[data-devices-status]') || statusNote;
 
   function renderDevices(res) {
     var devices = (res && res.devices) || [];
@@ -418,6 +496,8 @@ function initPortalSdkBridge() {
     });
   }
 
+  var vpnConnectCtrl = null;
+
   function renderServers(servers) {
     if (!serversBody) return;
     serversBody.innerHTML = '';
@@ -432,6 +512,14 @@ function initPortalSdkBridge() {
       tr.children[1].textContent = sdkFactory.formatServerStatusAndLoad(srv);
       tr.children[2].textContent = srv.ping_ms ? srv.ping_ms + ' ms' : '—';
       tr.children[3].textContent = sdkFactory.formatServerProtocolsAndTags(srv);
+      sdkFactory.appendServerVlessActions(tr.children[3], srv, {
+        statusEl: statusNote,
+        onSelectQr: function (selectedSrv) {
+          if (vpnConnectCtrl && typeof vpnConnectCtrl.selectServerVless === 'function') {
+            vpnConnectCtrl.selectServerVless(selectedSrv);
+          }
+        }
+      });
       serversBody.appendChild(tr);
     });
   }
@@ -460,7 +548,7 @@ function initPortalSdkBridge() {
       : Promise.resolve();
 
     return ready.then(function () {
-      return Promise.all([sdk.getMe(), sdk.getSubscription(), sdk.getBillingHistory(), siteConfigPromise]);
+      return Promise.all([sdk.getMe(), sdk.getSubscription(), Promise.resolve({ payments: [] }), siteConfigPromise]);
     }).then(function (all) {
       var me = all[0];
       var subRes = all[1];
@@ -494,30 +582,81 @@ function initPortalSdkBridge() {
         if (subDds[1] && sub.expires_at) subDds[1].textContent = new Date(sub.expires_at).toLocaleDateString();
         if (subDds[2] && typeof sub.price_minor === 'number') subDds[2].textContent = formatEur(sub.price_minor);
       }
+      var accCheckoutForm = document.querySelector('[data-account-checkout-form]');
+      if (accCheckoutForm && sdkFactory.isSiteCheckoutEnabled(siteCfg)) {
+        accCheckoutForm.hidden = false;
+        var urlPlan = new URLSearchParams(window.location.search || '').get('plan');
+        var planSelect = accCheckoutForm.querySelector('[data-account-plan-select]');
+        if (planSelect && urlPlan && planSelect.querySelector('option[value="' + urlPlan + '"]')) {
+          planSelect.value = urlPlan;
+        }
+        var providerHost = accCheckoutForm.querySelector('[data-payment-providers]');
+        if (providerHost && !accCheckoutForm.__providersMounted) {
+          accCheckoutForm.__providersMounted = true;
+          var getAccProvider = function () { return null; };
+          sdkFactory.mountPaymentProviderSelector(sdk, providerHost).then(function (getter) {
+            if (typeof getter === 'function') getAccProvider = getter;
+          });
+          var chkStatus = accCheckoutForm.querySelector('[data-account-checkout-status]') || statusNote;
+          var chkBtn = accCheckoutForm.querySelector('button[type="submit"]');
+          accCheckoutForm.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            var chosenPlan = (planSelect && planSelect.value) || 'quarterly';
+            var returnUrl = new URL('./account.html', window.location.href).href;
+            var cancelUrl = new URL('./account.html?status=cancelled', window.location.href).href;
+            setStatus(chkStatus, uiMsg().loading, 'loading', { scroll: false });
+            sdkFactory.withFormBusy(accCheckoutForm, chkBtn, function () {
+              return sdk.checkout({
+                plan_code: chosenPlan,
+                provider: getAccProvider(),
+                return_url: returnUrl,
+                cancel_url: cancelUrl
+              }).then(function (res) {
+                sdkFactory.handleCheckoutResponse(sdk, res);
+              }).catch(function (err) {
+                setStatus(chkStatus, sdkFactory.formatPortalApiError(err, 'Checkout failed.'), 'error');
+              });
+            });
+          });
+        }
+      }
+      var tabVpn = document.querySelector('#tab-vpn-access');
+      var tabDev = document.querySelector('#tab-devices');
+      var panelDev = document.querySelector('#panel-devices');
       if (!serversAllowed) {
-        [
-          keyEl && keyEl.parentElement,
-          serversBody && serversBody.closest('div'),
-          devicesCount && devicesCount.closest('h3, h2'),
-          devicesBody && devicesBody.closest('div')
-        ].forEach(function (el) {
-          if (el && el !== vpnPanel) el.hidden = true;
-        });
-        var vpnHeading = vpnPanel.querySelector('h2, h3');
-        if (vpnHeading && /VPN Key|Available Servers/i.test(vpnHeading.textContent || '')) vpnHeading.hidden = true;
-        sdkFactory.mountAccountWaitlistCard(vpnPanel, siteCfg, { prepend: true, className: 'card' });
+        if (tabVpn) tabVpn.hidden = true;
+        if (vpnPanel) vpnPanel.hidden = true;
+        if (tabDev) tabDev.hidden = true;
+        if (panelDev) panelDev.hidden = true;
+        if (window.__kuniAccountTabs && typeof window.__kuniAccountTabs.refresh === 'function') {
+          window.__kuniAccountTabs.refresh();
+        }
+        var waitlistHost = document.querySelector('.account-content') || vpnPanel;
+        sdkFactory.mountAccountWaitlistCard(waitlistHost, siteCfg, { prepend: true, className: 'card' });
         return;
+      }
+      if (tabVpn) tabVpn.hidden = false;
+      if (tabDev) tabDev.hidden = false;
+      if (window.__kuniAccountTabs && typeof window.__kuniAccountTabs.refresh === 'function') {
+        window.__kuniAccountTabs.refresh();
       }
       accessKey = (sub && sub.access_key) || '';
       if (keyEl) keyEl.textContent = revealed ? accessKey : maskKey(accessKey);
       if (!accessKey) {
+        if (vpnConnectCtrl) { vpnConnectCtrl.hide(); vpnConnectCtrl = null; }
         renderServers([]);
         renderDevices({ limit: 5, devices: [] });
         return;
       }
       sdk.getBootstrap(accessKey).then(function (boot) {
+        var connectAnchor = (keyEl && keyEl.parentElement) || vpnPanel;
+        vpnConnectCtrl = sdkFactory.mountVpnConnectPanel(connectAnchor, boot, {
+          createQrMatrix: createQrMatrix,
+          placement: 'after'
+        });
         renderServers((boot && boot.servers) || []);
       }).catch(function (err) {
+        if (vpnConnectCtrl) { vpnConnectCtrl.hide(); vpnConnectCtrl = null; }
         if (err.code === 'KEY_EXPIRED') {
           setStatus(topStatusNote || statusNote, uiMsg().keyExpired, 'warning');
         } else if (err.code === 'KEY_REVOKED') {
@@ -533,6 +672,7 @@ function initPortalSdkBridge() {
       sdk.getDevices(accessKey).then(renderDevices).catch(function () { /* ignore */ });
     }).catch(function (err) {
       if (sdk.mode === 'live' && (!sdk.isAuthenticated() || (err && (err.status === 401 || err.code === 'UNAUTHORIZED')))) {
+        sdk.clearSession();
         window.location.replace('./login.html');
         return;
       }
@@ -597,6 +737,15 @@ function initPortalSdkBridge() {
         });
       });
     });
+  }
+
+  var signOutBtn = document.querySelector('[data-signout]');
+  if (signOutBtn && sdk.mode === 'live') {
+    signOutBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      sdk.logout().then(function () { window.location.href = './login.html'; });
+    }, true);
   }
 
   var logoutAllBtn = document.querySelector('[data-logout-all]');

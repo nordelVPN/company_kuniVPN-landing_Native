@@ -1,5 +1,6 @@
 @use 'sass:meta';
 @use 'components/portal-status';
+@use 'components/vpn-connect';
 /* cyrillic-ext */
 @font-face {
   font-family: 'Montserrat';
@@ -247,3 +248,10 @@ a,summary{min-width:44px;min-height:44px}
 
 
 @include meta.load-css('odc');
+
+.checkout-actions { display: grid; gap: 10px; }
+
+[data-billing-ui]{display:none!important}
+.account-overview:has(.overview-secondary[hidden]){grid-template-columns:1fr}
+
+.account-content, .account-content > *, [role="tabpanel"] { min-width: 0; max-width: 100%; }
