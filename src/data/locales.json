@@ -67,7 +67,7 @@
     "Тарифы / kuniVPN": "Plans / kuniVPN",
     "Выбери": "Find",
     "свой ритм.": "your pace.",
-    "Посмотреть оформление": "Preview checkout",
+    "Посмотреть оформление": "Choose plan",
     "Всё": "Everything",
     "под контролем.": "under control.",
     "Твоя подписка": "Your subscription",
@@ -367,7 +367,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Sign out of your kuniVPN account?"
+    "Sign out of your kuniVPN account?": "Sign out of your kuniVPN account?",
+    "Join wishlist": "Join wishlist"
   },
   "ru": {
     "Свобода для": "Свобода для",
@@ -437,7 +438,7 @@
     "Тарифы / kuniVPN": "Тарифы / kuniVPN",
     "Выбери": "Выбери",
     "свой ритм.": "свой ритм.",
-    "Посмотреть оформление": "Посмотреть оформление",
+    "Посмотреть оформление": "Выбрать тариф",
     "Всё": "Всё",
     "под контролем.": "под контролем.",
     "Твоя подписка": "Твоя подписка",
@@ -737,7 +738,8 @@
     "Auto connect preview": "Auto connect preview",
     "Kill switch preview": "Kill switch preview",
     "Protocol preview": "Protocol preview",
-    "Notifications preview": "Notifications preview"
+    "Notifications preview": "Notifications preview",
+    "Join wishlist": "В список ожидания"
   },
   "pl": {
     "Свобода для": "Wolność dla",
@@ -807,7 +809,7 @@
     "Тарифы / kuniVPN": "Plany / kuniVPN",
     "Выбери": "Znajdź",
     "свой ритм.": "swój rytm.",
-    "Посмотреть оформление": "Podgląd zamówienia",
+    "Посмотреть оформление": "Wybierz plan",
     "Всё": "Wszystko",
     "под контролем.": "pod kontrolą.",
     "Твоя подписка": "Twoja subskrypcja",
@@ -1107,7 +1109,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Opuścić lokalny prototyp? Nie istnieje prawdziwa sesja."
+    "Sign out of your kuniVPN account?": "Opuścić lokalny prototyp? Nie istnieje prawdziwa sesja.",
+    "Join wishlist": "Dołącz do listy oczekujących"
   },
   "uk": {
     "Свобода для": "Свобода для",
@@ -1177,7 +1180,7 @@
     "Тарифы / kuniVPN": "Тарифи / kuniVPN",
     "Выбери": "Обери",
     "свой ритм.": "свій ритм.",
-    "Посмотреть оформление": "Переглянути оформлення",
+    "Посмотреть оформление": "Обрати тариф",
     "Всё": "Усе",
     "под контролем.": "під контролем.",
     "Твоя подписка": "Твоя підписка",
@@ -1477,7 +1480,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Sign out of your kuniVPN account?"
+    "Sign out of your kuniVPN account?": "Sign out of your kuniVPN account?",
+    "Join wishlist": "До списку очікування"
   },
   "lt": {
     "Свобода для": "Laisvė",
@@ -1547,7 +1551,7 @@
     "Тарифы / kuniVPN": "Planai / kuniVPN",
     "Выбери": "Rask",
     "свой ритм.": "savo ritmą.",
-    "Посмотреть оформление": "Peržiūrėti atsiskaitymą",
+    "Посмотреть оформление": "Pasirinkti planą",
     "Всё": "Viskas",
     "под контролем.": "kontroliuojama.",
     "Твоя подписка": "Tavo prenumerata",
@@ -1847,7 +1851,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Išeiti iš vietinio prototipo? Tikros sesijos nėra."
+    "Sign out of your kuniVPN account?": "Išeiti iš vietinio prototipo? Tikros sesijos nėra.",
+    "Join wishlist": "Į laukiančiųjų sąrašą"
   },
   "tr": {
     "Свобода для": "İnternetin için",
@@ -1917,7 +1922,7 @@
     "Тарифы / kuniVPN": "Planlar / kuniVPN",
     "Выбери": "Temponu",
     "свой ритм.": "seç.",
-    "Посмотреть оформление": "Ödemeyi önizle",
+    "Посмотреть оформление": "Plan seç",
     "Всё": "Her şey",
     "под контролем.": "kontrol altında.",
     "Твоя подписка": "Aboneliğin",
@@ -2217,7 +2222,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Yerel prototipten çıkılsın mı? Gerçek bir oturum yok."
+    "Sign out of your kuniVPN account?": "Yerel prototipten çıkılsın mı? Gerçek bir oturum yok.",
+    "Join wishlist": "Bekleme listesine katıl"
   },
   "ro": {
     "Свобода для": "Libertate pentru",
@@ -2287,7 +2293,7 @@
     "Тарифы / kuniVPN": "Planuri / kuniVPN",
     "Выбери": "Găsește-ți",
     "свой ритм.": "ritmul.",
-    "Посмотреть оформление": "Previzualizare plată",
+    "Посмотреть оформление": "Alege planul",
     "Всё": "Totul",
     "под контролем.": "sub control.",
     "Твоя подписка": "Abonamentul tău",
@@ -2587,7 +2593,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Părăsești prototipul local? Nu există o sesiune reală."
+    "Sign out of your kuniVPN account?": "Părăsești prototipul local? Nu există o sesiune reală.",
+    "Join wishlist": "Înscrie-te pe lista de așteptare"
   },
   "de": {
     "Свобода для": "Freiheit für",
@@ -2657,7 +2664,7 @@
     "Тарифы / kuniVPN": "Tarife / kuniVPN",
     "Выбери": "Finde",
     "свой ритм.": "dein Tempo.",
-    "Посмотреть оформление": "Kasse ansehen",
+    "Посмотреть оформление": "Tarif wählen",
     "Всё": "Alles",
     "под контролем.": "unter Kontrolle.",
     "Твоя подписка": "Dein Abonnement",
@@ -2957,7 +2964,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Lokalen Prototyp verlassen? Es besteht keine echte Sitzung."
+    "Sign out of your kuniVPN account?": "Lokalen Prototyp verlassen? Es besteht keine echte Sitzung.",
+    "Join wishlist": "Zur Warteliste"
   },
   "sk": {
     "Свобода для": "Sloboda pre",
@@ -3027,7 +3035,7 @@
     "Тарифы / kuniVPN": "Plány / kuniVPN",
     "Выбери": "Nájdi",
     "свой ритм.": "svoje tempo.",
-    "Посмотреть оформление": "Náhľad pokladne",
+    "Посмотреть оформление": "Vybrať plán",
     "Всё": "Všetko",
     "под контролем.": "pod kontrolou.",
     "Твоя подписка": "Tvoje predplatné",
@@ -3327,7 +3335,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Opustiť lokálny prototyp? Neexistuje žiadna skutočná relácia."
+    "Sign out of your kuniVPN account?": "Opustiť lokálny prototyp? Neexistuje žiadna skutočná relácia.",
+    "Join wishlist": "Pridať sa na čakaciu listinu"
   },
   "hr": {
     "Свобода для": "Sloboda za",
@@ -3397,7 +3406,7 @@
     "Тарифы / kuniVPN": "Planovi / kuniVPN",
     "Выбери": "Pronađi",
     "свой ритм.": "svoj ritam.",
-    "Посмотреть оформление": "Pregled naplate",
+    "Посмотреть оформление": "Odaberi plan",
     "Всё": "Sve",
     "под контролем.": "pod kontrolom.",
     "Твоя подписка": "Tvoja pretplata",
@@ -3697,7 +3706,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Napustiti lokalni prototip? Ne postoji stvarna sesija."
+    "Sign out of your kuniVPN account?": "Napustiti lokalni prototip? Ne postoji stvarna sesija.",
+    "Join wishlist": "Pridruži se listi čekanja"
   },
   "sr": {
     "Свобода для": "Sloboda za",
@@ -3767,7 +3777,7 @@
     "Тарифы / kuniVPN": "Planovi / kuniVPN",
     "Выбери": "Pronađi",
     "свой ритм.": "svoj ritam.",
-    "Посмотреть оформление": "Pregled plaćanja",
+    "Посмотреть оформление": "Izaberi plan",
     "Всё": "Sve",
     "под контролем.": "pod kontrolom.",
     "Твоя подписка": "Tvoja pretplata",
@@ -4067,7 +4077,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Napustiti lokalni prototip? Ne postoji stvarna sesija."
+    "Sign out of your kuniVPN account?": "Napustiti lokalni prototip? Ne postoji stvarna sesija.",
+    "Join wishlist": "Pridruži se listi čekanja"
   },
   "bg": {
     "Свобода для": "Свобода за",
@@ -4137,7 +4148,7 @@
     "Тарифы / kuniVPN": "Планове / kuniVPN",
     "Выбери": "Намери",
     "свой ритм.": "своя ритъм.",
-    "Посмотреть оформление": "Преглед на плащането",
+    "Посмотреть оформление": "Избери план",
     "Всё": "Всичко",
     "под контролем.": "под контрол.",
     "Твоя подписка": "Твоят абонамент",
@@ -4437,7 +4448,8 @@
     "If an account exists, reset instructions have been sent.": "If an account exists, reset instructions have been sent.",
     "Service is temporarily unavailable. Please try again.": "Service is temporarily unavailable. Please try again.",
     "Session expired. Please sign in again.": "Session expired. Please sign in again.",
-    "Sign out of your kuniVPN account?": "Sign out of your kuniVPN account?"
+    "Sign out of your kuniVPN account?": "Sign out of your kuniVPN account?",
+    "Join wishlist": "Към списъка с чакащи"
   },
   "hu": {
     "Свобода для": "Szabadság",
@@ -4507,7 +4519,7 @@
     "Тарифы / kuniVPN": "Csomagok / kuniVPN",
     "Выбери": "Találd meg",
     "свой ритм.": "a ritmusod.",
-    "Посмотреть оформление": "Pénztár előnézet",
+    "Посмотреть оформление": "Csomag választása",
     "Всё": "Minden",
     "под контролем.": "kézben tartva.",
     "Твоя подписка": "Előfizetésed",
@@ -4807,6 +4819,7 @@
     "If an account exists, reset instructions have been sent.": "Demó megerősítés. E-mail nem ment ki.",
     "Service is temporarily unavailable. Please try again.": "Demó újrapróbálás. Küldd el az űrlapot a szolgáltatás elérhetetlenségének előnézetéhez.",
     "Session expired. Please sign in again.": "Demó: a munkamenet lejárt. Jelentkezz be újra.",
-    "Sign out of your kuniVPN account?": "Kilépsz a helyi prototípusból? Nincs valódi munkamenet."
+    "Sign out of your kuniVPN account?": "Kilépsz a helyi prototípusból? Nincs valódi munkamenet.",
+    "Join wishlist": "Csatlakozás a várólistához"
   }
 }

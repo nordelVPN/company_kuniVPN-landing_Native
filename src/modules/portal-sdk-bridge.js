@@ -10,6 +10,7 @@ function initPortalSdkBridge() {
   var sdk = sdkFactory.createVpnPortalSdk({ brandSlug: 'kuni' });
   sdkFactory.syncAccountNavLinks(sdk);
   var siteConfigPromise = sdk.getSiteConfig();
+  sdkFactory.bindPageBoot(siteConfigPromise);
   var KUNI_DEFAULT_PLANS = [
     { plan_code: 'trial', name: 'Trial (1 month)', price_minor: 100 },
     { plan_code: 'monthly', name: '1 Month', price_minor: 700 },
@@ -24,11 +25,14 @@ function initPortalSdkBridge() {
     var lang = sdkFactory.getCurrentSiteLanguage();
     document.querySelectorAll('[data-open-checkout]').forEach(function (el) {
       var planCode = el.getAttribute('data-open-checkout') || '';
-      el.setAttribute('data-wishlist-bot-url', sdkFactory.buildWishlistBotUrl(cfg, { planCode: planCode, language: lang }));
+      var botUrl = sdkFactory.buildWishlistBotUrl(cfg, { planCode: planCode, language: lang });
+      el.setAttribute('data-wishlist-bot-url', botUrl);
+      if (el.tagName === 'A') el.setAttribute('href', botUrl);
     });
   }
   siteConfigPromise.then(function (cfg) {
     currentSiteConfig = cfg;
+  sdkFactory.syncAccountNavLinks(sdk);
     var isWishlist = sdkFactory.isSiteInWishlistMode(cfg);
     document.documentElement.dataset.launchMode = isWishlist ? 'wishlist_only' : 'live';
     if (isWishlist) {
